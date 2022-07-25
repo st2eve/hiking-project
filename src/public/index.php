@@ -17,6 +17,15 @@ if(isset($_GET["url"])){
     $router->get('/contact', function(){ 
         require_once '../view/contact.php';
     });
+    $router->get('/register', function(){ 
+        require_once '../view/user/register.php';
+    });
+    $router->get('/login', function(){ 
+        require_once '../view/user/login.php';
+    });
+    $router->get('/profile', function(){ 
+        require_once '../view/user/profile.php';
+    });
 
     $router->run();
 }else{
