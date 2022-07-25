@@ -4,17 +4,21 @@ error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
 require_once('../core/dbconnexion.php');
+require_once('../core/router.php');
+require_once('../core/request.php');
 
-// On récupère tout le contenu de la table Tags
-$allTags = $connect->prepare('SELECT * FROM Tags');
-$allTags->execute();
-$tags = $allTags->fetchAll();
+//Router home-made
+if(isset($_GET["url"])){
+    $router = new Router($_GET["url"]);
 
+    $router->get('/home', function(){ 
+        require_once '../view/homepage.php';
+    });
+    $router->get('/contact', function(){ 
+        require_once '../view/contact.php';
+    });
 
-// On affiche chaque tags un à un
-foreach ($tags as $tag) {
-?>
-    <p><?php echo $tag['name']; ?></p>
-<?php
+    $router->run();
+}else{
+        require_once '../view/homepage.php';
 }
-?>
