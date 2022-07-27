@@ -26,6 +26,10 @@ if(isset($_GET["url"])){
         require_once '../view/user/profile.php';
     });
 
+    $router->get('/profile/:id', function($id){
+        echo "Hola $id"; 
+    });
+
     $router->run();
 }else{
         require_once '../view/homepage.php';
