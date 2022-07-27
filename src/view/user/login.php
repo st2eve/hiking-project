@@ -8,7 +8,7 @@ echo '<h1>Congratulations ! tu es sur la page connexion</h1>';
 require '../view/includes/header.php';
 ?>
 
-<form class="main__form">
+<form action='' class="main__form">
   <div class="form__email">
     <label for="exampleInputEmail1" class="email__label">Email address</label>
     <input type="email" class="email__input" aria-describedby="emailHelp">

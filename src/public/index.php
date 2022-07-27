@@ -30,7 +30,3 @@ if(isset($_GET["url"])){
 }else{
         require_once '../view/homepage.php';
 }
-
-$router->post('/profile/:id', function($id){
-    require_once '../view/user/profile.php';
-});
