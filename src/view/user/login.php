@@ -6,6 +6,7 @@ ini_set("display_errors", 1);
 echo '<h1>Congratulations ! tu es sur la page connexion</h1>';
 
 require '../view/includes/header.php';
+require '../core/bootstrap.php';
 ?>
 
 <form action='' class="main__form">
