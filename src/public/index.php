@@ -22,15 +22,15 @@ if(isset($_GET["url"])){
     $router->get('/login', function(){ 
         require_once '../view/user/login.php';
     });
-    $router->get('/profile', function(){ 
-        require_once '../view/user/profile.php';
-    });
-
     $router->get('/profile/:id', function($id){
-        echo "Hola $id"; 
+        require_once '../view/user/profile.php';
     });
 
     $router->run();
 }else{
         require_once '../view/homepage.php';
 }
+
+$router->post('/profile/:id', function($id){
+    require_once '../view/user/profile.php';
+});

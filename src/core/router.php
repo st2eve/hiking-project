@@ -22,6 +22,14 @@ class Router{
 
     }
 
+    public function post($path, $callable){
+
+        $route = new Route($path, $callable); // On initialise une instance de la classe Route
+
+        $this->routes['POST'][] = $route; // une fois la route créée, elle sera stockée dans le tableau des routes et on précise que c'est une route sous la méthode "POST"
+    
+    }
+
     public function run(){ // fonction qui a pour but de vérifié si l'url écrite en paramètre correspond à une des urls
 
         if(!isset($this->routes[$_SERVER['REQUEST_METHOD']])){ // On récupère la méthode utilisée ($_SERVER['REQUEST_METHOD']), donc si ce paramètre n'existe pas (if(!isset...), on renverra une exception.
