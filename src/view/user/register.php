@@ -58,7 +58,7 @@ if (isset($_POST['reg_user'])) {
 ?>
 <body>
     <div class="main-block">
-        <form action="./register.php" method="POST" class="main-form">
+        <form action="../user/register.php" method="POST" class="main-form">
             <div class="form-container">
                 <h1>Register</h1>
                 <p>Please fill in this form to create an account.</p>
