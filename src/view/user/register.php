@@ -7,19 +7,39 @@ require '../view/includes/header.php';
 ?>
 <body>
     <div class="main-block">
-      <h1>Registration</h1>
-      <form action="/">
-        <hr>
-        <input type="text" name="name" class="name" placeholder="Email" required/>
-        <input type="text" name="name" class="name" placeholder="Firstname" required/>
-        <input type="text" name="name" class="name" placeholder="Lastname" required/>
-        <input type="text" name="name" class="name" placeholder="Username" required/>
-        <input type="password" name="name" class="name" placeholder="Password" required/>
-        <hr>
-        <div class="btn-block">
-          <button type="submit" href="/">Submit</button>
-        </div>
-      </form>
+        <form action="register.php" method="POST" class="main-form">
+            <div class="form-container">
+                <h1>Register</h1>
+                <p>Please fill in this form to create an account.</p>
+                <hr>
+
+                <label for="email"><b>Email</b></label>
+                <input type="text" placeholder="Enter Email" name="email" class="form-email" required>
+
+                <label for="firstname"><b>Firstname</b></label>
+                <input type="text" placeholder="Enter Firstname" name="firstname" class="form-email" required>
+
+                <label for="lastname"><b>LastName</b></label>
+                <input type="text" placeholder="Enter LastName" name="lastname" class="form-email" required>
+
+                <label for="username"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="username" class="form-email" required>
+
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" class="form-psw" required>
+
+                <label for="psw-repeat"><b>Repeat Password</b></label>
+                <input type="password" placeholder="Repeat Password" name="psw-repeat" class="form-psw-repeat" required>
+                <hr>
+
+                <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+                <button type="submit" class="registerbtn">Register</button>
+            </div>
+
+            <div class="container signin">
+                <p>Already have an account? <a href="#">Sign in</a>.</p>
+            </div>
+        </form>
     </div>
   </body>
 

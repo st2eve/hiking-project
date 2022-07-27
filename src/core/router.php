@@ -1,5 +1,7 @@
 <?php
- declare(strict_types=1);
+    declare(strict_types=1);
+    error_reporting(E_ALL);
+    ini_set("display_errors", 1);
 
  require_once('../core/request.php');
 
@@ -21,14 +23,6 @@ class Router{
         $this->routes['GET'][] = $route; // une fois la route créée, elle sera stockée dans le tableau des routes et on précise que c'est une route sous la méthode "GET"
 
     }
-
-    /*public function post($path, $callable){
-
-        $route = new Route($path, $callable); // On initialise une instance de la classe Route
-
-        $this->routes['POST'][] = $route; // une fois la route créée, elle sera stockée dans le tableau des routes et on précise que c'est une route sous la méthode "POST"
-    
-    }*/
 
     public function run(){ // fonction qui a pour but de vérifié si l'url écrite en paramètre correspond à une des urls
 
