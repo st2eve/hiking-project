@@ -19,6 +19,10 @@ if(isset($_GET["url"])){
     $router->get('/register', function(){ 
         require_once '../view/user/register.php';
     });
+    $router->post('/register', function(){ 
+        header('location: http://localhost:3000/register');
+        exit;
+    });
     $router->get('/login', function(){ 
         require_once '../view/user/login.php';
     });
