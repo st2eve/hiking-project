@@ -3,34 +3,22 @@ declare(strict_types=1);
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
-require_once('../core/router.php');
-require_once('../core/request.php');
+// On importe les différents fichiers requis
+require_once '../core/request.php';
+require_once '../core/router.php';
+require_once '../core/routes.php';
 
-//Router home-made
-if(isset($_GET["url"])){
-    $router = new Router($_GET["url"]);
+// On utilise les méthodes statiques de la classe Request (pas besoin de l'instancier)
+$uri = Request::uri();
+$method = Request::method();
 
-    $router->get('/home', function(){ 
-        require_once '../view/homepage.php';
-    });
-    $router->get('/contact', function(){ 
-        require_once '../view/contact.php';
-    });
-    $router->get('/register', function(){ 
-        require_once '../view/user/register.php';
-    });
-    $router->post('/register', function(){ 
-        header('location: http://localhost:3000/register');
-        exit;
-    });
-    $router->get('/login', function(){ 
-        require_once '../view/user/login.php';
-    });
-    $router->get('/profile/:id', function($id){
-        require_once '../view/user/profile.php';
-    });
+// On instancie l'object $router
+$router = new Router();
 
-    $router->run();
-}else{
-        require_once '../view/homepage.php';
-}
+// On utilise la méthode register() pour stocker les routes du fichier routes.php dans
+// la propriété $routes du routeur.
+$router->register($routes);
+
+// On fait le routing en tant que tel : sur base de l'uri et de la méthode, on va
+// require le bon fichier.
+$router->direct($uri, $method);

@@ -7,6 +7,7 @@ require '../view/includes/header.php';
 require '../core/dbconnexion.php';
 
 if(!empty($_POST)){
+
   $firstname=$_POST['firstname'];
   $lastname=$_POST['lastname'];
   $username=$_POST['username'];
@@ -14,7 +15,17 @@ if(!empty($_POST)){
   $psw=$_POST['psw'];
   $psw_check=$_POST['psw-check'];
 
-  echo '<script type="text/javascript">alert("Salut '. $firstname.' '.$lastname.', Ton username est : '.$username.' et ton email est : '.$email.'");</script>';
+  $sql = "INSERT INTO Users (firstname, lastname, username, email, password)
+  VALUES (?, ?, ?, ?, ?)";
+
+  $values = array($_POST['firstname'], $_POST['lastname'], $_POST['username'], $_POST['email'], $_POST['psw'], );
+
+  $statement = $connect->prepare($sql);
+
+  $statement->execute($values);
+
+  header('location: http://localhost:3000/login');
+
 }else{
   echo '<script type="text/javascript">alert("ça marche pas bordel tavu");</script>';
 }
