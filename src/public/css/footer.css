@@ -14,12 +14,20 @@ footer {
   background-position: center;
 }
 
-ul {
+.copyright {
+}
+.medias {
+  background-color: darkgreen;
+  border-radius: 25px;
+}
+.icons {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
+a {
+}
 
-li {
+i {
   padding: 0 20px;
 }
