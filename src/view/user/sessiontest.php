@@ -21,4 +21,4 @@ session_start ();
 
 
 <a href="logout">Logout</a>
-<a href="login">Login</a>
+<!-- <a href="login">Login</a> -->

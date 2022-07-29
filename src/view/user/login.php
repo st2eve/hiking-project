@@ -19,7 +19,7 @@ ini_set("display_errors", 1);
                      session_start();
                      echo"<center><h5 class='text-success'>Login successfully</h5></center>";
                      $_SESSION['id'] = $fetch['username'];
-                     header('location: sessiontest');
+                     header('location: home');
 
                   } else {
 
@@ -56,6 +56,7 @@ ini_set("display_errors", 1);
                            </div>
                            <button name="login">Login</button>
                      </form>
+                     <a href="home">Home</a>
                   </div>
                </div>
          </div>
