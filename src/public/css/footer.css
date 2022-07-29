@@ -1,0 +1,10 @@
+footer {
+  background-image: url("../IMG/footer.png");
+  background-size: cover;
+}
+.down {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  display: flex;
+  align-items: center;
+}

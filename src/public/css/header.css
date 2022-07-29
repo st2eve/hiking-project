@@ -1,0 +1,24 @@
+header {
+  background-image: url(../IMG/header_cover.png);
+  background-size: cover;
+  background-position: center center;
+  padding-top: 50px;
+  padding-bottom: 150px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.gauche {
+  padding-left: 50px;
+}
+
+.home {
+  background-image: url(../IMG/home.png);
+  height: 10px;
+}
+
+.droite {
+  padding-right: 50px;
+}
