@@ -20,5 +20,6 @@ $routes = [
     // Routes de la méthode POST
     'POST' => [
         '/register' => 'view/user/register.php',
+        '/profile' => 'view/user/profile.php',
     ],
 ];
