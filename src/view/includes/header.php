@@ -6,9 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- <link type="text/css" href="../../css/main.css" rel="stylesheet"> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <title>Becode - Boiler plate MVC</title>
+    <link rel="stylesheet" href="/src/public/css/header.css"
+    <title>One more Hike</title>
 </head>
 <body>
     <header>
+
         <h1>Welcome to One More Hike</h1>
     </header>
