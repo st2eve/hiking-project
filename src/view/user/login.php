@@ -9,16 +9,27 @@ ini_set("display_errors", 1);
         if($_POST['username'] != "" || $_POST['password'] != ""){
             $username = $_POST['username'];
             $password = $_POST['password'];
-            $sql = "SELECT * FROM `Users` WHERE `username`=? AND `password`=? ";
+            $sql = "SELECT * FROM `Users` WHERE `username`=?";
             $query = $connect->prepare($sql);
-            $query->execute(array($username,$password));
+            $query->execute(array($username));
             $row = $query->rowCount();
             $fetch = $query->fetch();
             if($row > 0) {
-                echo"<center><h5 class='text-success'>Login successfully</h5></center>";
-            } else{
-                echo"<center><h5 class='text-danger'>Invalid username or password</h5></center>";
-            }
+               if(password_verify($_POST['password'] , $fetch['password'])){
+                     session_start();
+                     echo"<center><h5 class='text-success'>Login successfully</h5></center>";
+                     $_SESSION['id'] = $fetch['username'];
+                     header('location: sessiontest');
+
+                  } else {
+
+                     echo"<center><h5 class='text-danger'>UnHash error</h5></center>";
+                  }
+               } else {
+
+                  echo"<center><h5 class='text-danger'>Password or username is not correct</h5></center>";
+               
+               }
         }
     }
 ?>
