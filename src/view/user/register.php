@@ -15,10 +15,12 @@ if(!empty($_POST)){
   $psw=$_POST['psw'];
   $psw_check=$_POST['psw-check'];
 
+  $passwordhache = password_hash($_POST['psw'], PASSWORD_BCRYPT);
+
   $sql = "INSERT INTO Users (firstname, lastname, username, email, password)
   VALUES (?, ?, ?, ?, ?)";
 
-  $values = array($_POST['firstname'], $_POST['lastname'], $_POST['username'], $_POST['email'], $_POST['psw'], );
+  $values = array($_POST['firstname'], $_POST['lastname'], $_POST['username'], $_POST['email'], $passwordhache, );
 
   $statement = $connect->prepare($sql);
 
