@@ -21,5 +21,6 @@ $routes = [
     'POST' => [
         '/register' => 'view/user/register.php',
         '/profile' => 'view/user/profile.php',
+        '/login' => 'view/user/login.php',
     ],
 ];
