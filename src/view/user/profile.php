@@ -24,13 +24,36 @@ if(!empty($_POST)){
 
   $hikestatement->execute($hikevalues);
 
+  $hikeiD = $connect->prepare('SELECT max(hikeID) FROM `hikes`');
+  $hikeiD->execute();
+  
+  $tagsCheckbox = $_POST["tagsCheckbox"];
+  $submit = $_POST["submit"];
+
+  
+    $tagsReq = $connect->prepare("INSERT INTO hikes_tags (hikeID, tagsID)
+                                  VALUES (?, ?)");
+    $tagsArr = array($_POST[$hikeiD], $_POST[$tagsCheckbox]);
+
+    $tagsReq->execute($tagsArr);
+  
+  
+
+
   header('location: http://localhost:3000/profile');
 
 }else{
   echo 'No empty field authorized';
 }
+
+// On récupère tout le contenu de la table Tags
+$allTags = $connect->prepare('SELECT * FROM Tags');
+$allTags->execute();
+$tags = $allTags->fetchAll();
+
 ?>
 <body>
+  
     <div class="main-block">
         <form action="" method="POST" class="main-form">
             <div class="form-container">
@@ -55,13 +78,22 @@ if(!empty($_POST)){
 
                 <label for="hikedesc"><b>hikedesc</b></label>
                 <input type="text" placeholder="Enter a Description" name="hikedesc" class="form-hikedesc" required>
+                <?php 
+                    // On affiche chaque tags un à un
+                    foreach ($tags as $tag) {
+                ?>
+                <label for="checkbox"><b><?php echo $tag['name'];?></b></label>
+                <input type="checkbox" name="tagsCheckbox[]" value="<?php echo $tag['name'];?>">
+                <?php
+                  }
+                ?>
 
                 <button name="submit" type="submit" class="addhikebtn">Add a Hike</button>
+                
             </div>
         </form>
     </div>
   </body>
-
   <?php
   require '../view/includes/footer.php';
   ?>
