@@ -24,7 +24,7 @@ if(!empty($_POST)){
 
   $hikestatement->execute($hikevalues);
 
-  $hikeiD = $connect->prepare('SELECT max(hikeID) FROM `hikes`');
+  $hikeiD = $connect->prepare('SELECT LAST_INSERT_ID() FROM `hikes`');
   $hikeiD->execute();
   
   $tagsCheckbox = $_POST["tagsCheckbox"];
@@ -33,7 +33,7 @@ if(!empty($_POST)){
   
     $tagsReq = $connect->prepare("INSERT INTO hikes_tags (hikeID, tagsID)
                                   VALUES (?, ?)");
-    $tagsArr = array($_POST[$hikeiD], $_POST[$tagsCheckbox]);
+    $tagsArr = array($_POST[$hikeiD], $_POST['tagsCheckbox']);
 
     $tagsReq->execute($tagsArr);
   
