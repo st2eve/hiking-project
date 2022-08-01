@@ -6,6 +6,11 @@ ini_set("display_errors", 1);
 require '../view/includes/header.php';
 require '../core/dbconnexion.php';
 
+// On récupère tout le contenu de la table Tags
+$allTags = $connect->prepare('SELECT * FROM Tags');
+$allTags->execute();
+$tags = $allTags->fetchAll();
+
 if(!empty($_POST)){
   
   $hikename=$_POST['hikename'];
@@ -14,11 +19,12 @@ if(!empty($_POST)){
   $hikeduration=$_POST['hikeduration'];
   $hikeelevation=$_POST['hikeelevation'];
   $hikedesc=$_POST['hikedesc'];
+  $tagsCheckbox = implode(',', $_POST['tagsCheckbox']);
 
-  $hikesql = "INSERT INTO hikes (name, date, distance, duration, elevation_gain, description)
-  VALUES (?, ?, ?, ?, ?, ?)";
+  $hikesql = "INSERT INTO hikes (name, date, distance, duration, elevation_gain, description, tags)
+  VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-  $hikevalues = array($_POST['hikename'], $_POST['hikeDate'], $_POST['hikedistance'], $_POST['hikeduration'], $_POST['hikeelevation'], $_POST['hikedesc']);
+  $hikevalues = array($_POST['hikename'], $_POST['hikeDate'], $_POST['hikedistance'], $_POST['hikeduration'], $_POST['hikeelevation'], $_POST['hikedesc'], implode(',', $_POST['tagsCheckbox']));
 
   $hikestatement = $connect->prepare($hikesql);
 
@@ -26,18 +32,6 @@ if(!empty($_POST)){
 
   $hikeiD = $connect->prepare('SELECT LAST_INSERT_ID() FROM `hikes`');
   $hikeiD->execute();
-  
-  $tagsCheckbox = $_POST["tagsCheckbox"];
-  $submit = $_POST["submit"];
-
-  
-    $tagsReq = $connect->prepare("INSERT INTO hikes_tags (hikeID, tagsID)
-                                  VALUES (?, ?)");
-    $tagsArr = array($_POST[$hikeiD], $_POST['tagsCheckbox']);
-
-    $tagsReq->execute($tagsArr);
-  
-  
 
 
   header('location: http://localhost:3000/profile');
@@ -45,11 +39,6 @@ if(!empty($_POST)){
 }else{
   echo 'No empty field authorized';
 }
-
-// On récupère tout le contenu de la table Tags
-$allTags = $connect->prepare('SELECT * FROM Tags');
-$allTags->execute();
-$tags = $allTags->fetchAll();
 
 ?>
 <body>
