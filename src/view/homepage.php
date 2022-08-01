@@ -5,6 +5,15 @@
     require_once('../core/dbconnexion.php');
     session_start();
 ?>
+    <head>
+        <style>
+            .flex {
+            display: flex;
+            justify-content: space-around;
+            }
+        </style>
+
+    </head>
 
 	<h1>Welcome to the Home page!</h1>
 
@@ -13,6 +22,11 @@
     $allTags = $connect->prepare('SELECT * FROM Tags');
     $allTags->execute();
     $tags = $allTags->fetchAll();
+
+     // On récupère tout le contenu de la table Hikes
+    $allHikes = $connect->prepare('SELECT * FROM hikes');
+    $allHikes->execute();
+    $hikes = $allHikes->fetchAll();
 
     if (!$_SESSION['id']){
         echo "<h1>tu n'est pas connecter</h1>";
@@ -23,18 +37,38 @@
     } else {
         echo '<h1>tu es connecter</h1>';
         echo '<br />';
-        echo ' Oh hi '.$_SESSION['id'].'!';
+        echo ' Oh hi '.$_SESSION['username'].'!';
         echo '<br />';
         echo '<a href="logout">Logout</a>';
     }
-
-
-    // On affiche chaque tags un à un
-    foreach ($tags as $tag) {
 ?>
-    <p><?php echo $tag['name']; ?></p>
-<?php
-    }
 
+    <div class="flex">
+        <?php
+            // On affiche chaque tags un à un
+            foreach ($tags as $tag) {
+        ?>
+        <a href='#'><?php echo $tag['name']; }?></a>
+    </div>
+    <div>
+
+        <?php
+            foreach ($hikes as $hike) {
+        ?>
+        <div>
+            <h3><?php echo $hike['name'];?></h3>
+            <h5><?php echo $hike['date'];?></h5>
+            <p>Distance : <?php echo $hike['distance'];?>Km</p>
+            <p>Duraction : <?php echo $hike['duration'];?>Minutes</p>
+            <p>Elevation gain : <?php echo $hike['elevation_gain'];?>%</p>
+            <p>Decription : <?php echo $hike['description'];?></p>
+        </div>
+    <?php
+    }
+    ?>
+
+    </div>
+
+<?php
     require 'includes/footer.php';
 ?>
