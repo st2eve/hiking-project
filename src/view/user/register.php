@@ -20,16 +20,17 @@ if(!empty($_POST)){
   $sql = "INSERT INTO Users (firstname, lastname, username, email, password)
   VALUES (?, ?, ?, ?, ?)";
 
-  $values = array($_POST['firstname'], $_POST['lastname'], $_POST['username'], $_POST['email'], $passwordhache, );
+  $values = array($firstname, $lastname, $username, $email, $passwordhache, );
 
   $statement = $connect->prepare($sql);
+  
+  if($psw != $psw_check){
+    echo "<p class='psw-error'>Your passwords aren't identical, please check them.</p>";
+  }else{
+    $statement->execute($values);
+    header('location: http://localhost:3000/login');
+  }
 
-  $statement->execute($values);
-
-  header('location: http://localhost:3000/login');
-
-}else{
-  echo '<script type="text/javascript">alert("ça marche pas bordel tavu");</script>';
 }
 ?>
 <body>
@@ -59,12 +60,12 @@ if(!empty($_POST)){
                 <input type="password" placeholder="Repeat Password" name="psw-check" class="form-psw-repeat" required>
                 <hr>
 
-                <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+                <p class="form-conditions">By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
                 <button name="submit" type="submit" class="registerbtn">Register</button>
             </div>
 
             <div class="container signin">
-                <p>Already have an account? <a href="#">Sign in</a>.</p>
+                <p>Already have an account? <a href="http://localhost:3000/login">Sign in</a>.</p>
             </div>
         </form>
     </div>
