@@ -1,0 +1,22 @@
+.main-empty{
+    font-size: 15px;
+    color: red;
+    font-weight: bold;
+    margin: 15px;
+}
+.addhikebtn{
+    height: 50px;
+    min-width: 100px;
+    align-self: center;
+    border-radius: 10px;
+    font-size: 25px;
+}
+.addhikebtn:hover{
+    background-color: whitesmoke;
+    box-shadow: 2px 2px rgb(25, 25, 25);
+    cursor: pointer;
+}
+.label-tags{
+    align-self: center;
+    margin-top: 20px;
+}

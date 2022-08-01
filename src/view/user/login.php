@@ -3,6 +3,7 @@ declare(strict_types=1);
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
+   require '../view/includes/header.php';
    //Require la db
    require '../core/dbconnexion.php';
  
@@ -41,37 +42,25 @@ ini_set("display_errors", 1);
         }
     }
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
 <body>
    <main>
-      <div>
-         <div>
-               <div>
-                  <div>
-                     <h4>Login</h4>
+         <div class="main-block">
+            <h1>Login</h1>
+               <form class="main-form" method="post" action="">
+                  <div class="form-username">
+                     <label>Username</label>
+                     <input type="text" name="username" required="required"/>
                   </div>
-                  <div>
-                     <form method="post" action="">
-                           <div>
-                              <label>Username</label>
-                              <input type="text" name="username" required="required"/>
-                           </div>
-                           <div>
-                              <label>Password</label>
-                              <input type="password" name="password" required="required"/>
-                           </div>
-                           <button name="login">Login</button>
-                     </form>
-                     <a href="home">Home</a>
+                  <div class="form-password">
+                     <label>Password</label>
+                     <input type="password" name="password" required="required"/>
                   </div>
-               </div>
+                  <button class="loginbtn" name="login">Login</button>
+               </form>
+               <a href="home">Home</a>
          </div>
-      </div>
-   <main>
+   </main>
 </body>
 <?php
     require '../view/includes/footer.php';
 ?>
-</html>

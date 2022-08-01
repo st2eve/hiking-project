@@ -1,0 +1,17 @@
+.main-block h1{
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.loginbtn{
+    height: 50px;
+    min-width: 100px;
+    align-self: center;
+    border-radius: 10px;
+    font-size: 25px;
+}
+.loginbtn:hover{
+    background-color: whitesmoke;
+    box-shadow: 2px 2px rgb(25, 25, 25);
+    cursor: pointer;
+}

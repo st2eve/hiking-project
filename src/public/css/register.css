@@ -51,3 +51,8 @@ body{
     border-radius: 10px;
     font-size: 25px;
 }
+.registerbtn:hover{
+    background-color: whitesmoke;
+    box-shadow: 2px 2px rgb(25, 25, 25);
+    cursor: pointer;
+}

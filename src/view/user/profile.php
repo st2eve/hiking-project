@@ -37,41 +37,43 @@ if(!empty($_POST)){
   header('location: http://localhost:3000/profile');
 
 }else{
-  echo 'No empty field authorized';
-}
-
 ?>
+
 <body>
-  
-    <div class="main-block">
+  <div class="main-block">
+<?php
+  echo '<p class="main-empty">No empty field authorized</p>';
+}
+?>
+
         <form action="" method="POST" class="main-form">
             <div class="form-container">
                 <h1>Add Hike</h1>
                 <p>Please fill in this form to create a Hike.</p>
                 <hr>
 
-                <label for="hikeDate"><b>hikedate</b></label>
+                <label for="hikeDate"><b>Date</b></label>
                 <input type="text" value="<?php echo date('d-m-Y'); ?>" name="hikeDate" class="form-hikedate" required>
 
-                <label for="hikename"><b>hikename</b></label>
+                <label for="hikename"><b>Name</b></label>
                 <input type="text" placeholder="Enter Name" name="hikename" class="form-hikename" required>
 
-                <label for="hikedistance"><b>hikedistance</b></label>
+                <label for="hikedistance"><b>Distance</b></label>
                 <input type="number" placeholder="Enter a Distance (km)" name="hikedistance" class="form-hikedistance" required>
 
-                <label for="hikeduration"><b>hikeduration</b></label>
+                <label for="hikeduration"><b>Duration</b></label>
                 <input type="number" placeholder="Enter a Duration (min)" name="hikeduration" class="form-hikeduration" required>
                 
-                <label for="hikeelevation"><b>hikeelevation</b></label>
+                <label for="hikeelevation"><b>Elevation</b></label>
                 <input type="number" placeholder="Enter an Elevation (m)" name="hikeelevation" class="form-hikeelevation" required>
 
-                <label for="hikedesc"><b>hikedesc</b></label>
+                <label for="hikedesc"><b>Description</b></label>
                 <input type="text" placeholder="Enter a Description" name="hikedesc" class="form-hikedesc" required>
                 <?php 
                     // On affiche chaque tags un à un
                     foreach ($tags as $tag) {
                 ?>
-                <label for="checkbox"><b><?php echo $tag['name'];?></b></label>
+                <label class="label-tags" for="checkbox"><b><?php echo $tag['name'];?></b></label>
                 <input type="checkbox" name="tagsCheckbox[]" value="<?php echo $tag['name'];?>">
                 <?php
                   }

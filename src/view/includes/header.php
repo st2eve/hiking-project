@@ -16,20 +16,26 @@
 <body>
     <header>
         <div class="gauche" >
-        <input type="button" onclick="FormSubmit('header.php');" value="home"/>
-        <input type="button" onclick="FormSubmit('header.php');" value="Hikes"/>
-        <input type="button" onclick="FormSubmit('header.php');" value="Single hike"/>
+        <input type="button" src="http://localhost:3000/home" class="header-btn" value="home"/>
+        <?php
 
+        if (isset($_SESSION['login']) && $_SESSION['login'] == true) {
+        
+           echo '<input type="button" src="http://localhost:3000/profile" class="header-btn"  value="Your Hikes"/>';
+        
+        }else{
+            echo '<input type="button" src="http://localhost:3000/profile" class="header-btn"  value="Your Hikes"/>';
+        }
+        ?>
         </div>
 
         <div class="logo">
         <img src="IMG/Logo.png" alt="Logo" height="300px">
-
         </div>
 
         <div class="droite">
-        <input type="button" onclick="FormSubmit('header.php');" value="Login"/>
-        <input type="button" onclick="FormSubmit('header.php');" value="Sign up"/>
+        <input type="button" src="http://localhost:3000/login" class="header-btn" value="Login"/>
+        <input type="button" src="http://localhost:3000/register" class="header-btn" value="Sign up"/>
         </div>
         
     </header>
