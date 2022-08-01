@@ -1,0 +1,57 @@
+Index: src/view/user/login.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\ndeclare(strict_types=1);\nerror_reporting(E_ALL);\nini_set(\"display_errors\", 1);\n\n   require '../core/dbconnexion.php';\n \n    if(ISSET($_POST['login'])){\n        if($_POST['username'] != \"\" || $_POST['password'] != \"\"){\n            $username = $_POST['username'];\n            $password = $_POST['password'];\n            $sql = \"SELECT * FROM `Users` WHERE `username`=?\";\n            $query = $connect->prepare($sql);\n            $query->execute(array($username));\n            $row = $query->rowCount();\n            $fetch = $query->fetch();\n            if($row > 0) {\n               if(password_verify($_POST['password'] , $fetch['password'])){\n                     session_start();\n                     echo\"<center><h5 class='text-success'>Login successfully</h5></center>\";\n                     $_SESSION['id'] = $fetch['username'];\n                     header('location: home');\n\n                  } else {\n\n                     echo\"<center><h5 class='text-danger'>UnHash error</h5></center>\";\n                  }\n               } else {\n\n                  echo\"<center><h5 class='text-danger'>Password or username is not correct</h5></center>\";\n               \n               }\n        }\n    }\n?>\n\n<!DOCTYPE html>\n<html lang=\"en\">\n<body>\n   <main>\n      <div>\n         <div>\n               <div>\n                  <div>\n                     <h4>Login</h4>\n                  </div>\n                  <div>\n                     <form method=\"post\" action=\"\">\n                           <div>\n                              <label>Username</label>\n                              <input type=\"text\" name=\"username\" required=\"required\"/>\n                           </div>\n                           <div>\n                              <label>Password</label>\n                              <input type=\"password\" name=\"password\" required=\"required\"/>\n                           </div>\n                           <button name=\"login\">Login</button>\n                     </form>\n                     <a href=\"home\">Home</a>\n                  </div>\n               </div>\n         </div>\n      </div>\n   <main>\n</body>\n<?php\n    require '../view/includes/footer.php';\n?>\n</html>
+===================================================================
+diff --git a/src/view/user/login.php b/src/view/user/login.php
+--- a/src/view/user/login.php	
++++ b/src/view/user/login.php	
+@@ -3,10 +3,14 @@
+ error_reporting(E_ALL);
+ ini_set("display_errors", 1);
+ 
++   // On prend la db
+    require '../core/dbconnexion.php';
+  
++   //On check si l'user a bien remplis es forme   
+     if(ISSET($_POST['login'])){
++      // on verifie si Username et Password ne sont pas vide
+         if($_POST['username'] != "" || $_POST['password'] != ""){
++            // ...
+             $username = $_POST['username'];
+             $password = $_POST['password'];
+             $sql = "SELECT * FROM `Users` WHERE `username`=?";
+@@ -15,24 +19,26 @@
+             $row = $query->rowCount();
+             $fetch = $query->fetch();
+             if($row > 0) {
++               // On check si le Password est bien la resolution du hash
+                if(password_verify($_POST['password'] , $fetch['password'])){
++                  // On starte la session
+                      session_start();
+                      echo"<center><h5 class='text-success'>Login successfully</h5></center>";
++                     // On créer un session id avec en donnée le user name
+                      $_SESSION['id'] = $fetch['username'];
+                      header('location: home');
+ 
+                   } else {
+-
+-                     echo"<center><h5 class='text-danger'>UnHash error</h5></center>";
++                     echo"<center><h5 class='text-danger'>Password or username is not correct</h5></center>";
+                   }
+-               } else {
+-
+-                  echo"<center><h5 class='text-danger'>Password or username is not correct</h5></center>";
+-               
+-               }
++            } else {
++               echo"<center><h5 class='text-danger'>Password or username is not correct</h5></center>";
++            }
+         }
+     }
+ ?>
++
++<!---HTML---->
+ 
+ <!DOCTYPE html>
+ <html lang="en">
