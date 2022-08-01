@@ -5,15 +5,6 @@
     require_once('../core/dbconnexion.php');
     session_start();
 ?>
-    <head>
-        <style>
-            .flex {
-            display: flex;
-            justify-content: space-around;
-            }
-        </style>
-
-    </head>
 
 	<h1>Welcome to the Home page!</h1>
 
@@ -37,7 +28,7 @@
     } else {
         echo '<h1>tu es connecter</h1>';
         echo '<br />';
-        echo ' Oh hi '.$_SESSION['username'].'!';
+        echo '<p>Oh hi <a href="profile">'.$_SESSION['username'].'</a>!</p>';
         echo '<br />';
         echo '<a href="logout">Logout</a>';
     }
@@ -62,6 +53,7 @@
             <p>Duraction : <?php echo $hike['duration'];?>Minutes</p>
             <p>Elevation gain : <?php echo $hike['elevation_gain'];?>%</p>
             <p>Decription : <?php echo $hike['description'];?></p>
+            <p>Tag : <a href ='#'><?php echo $hike['tags'];?></a></p>
         </div>
     <?php
     }
