@@ -1,3 +1,11 @@
+<?php
+declare(strict_types=1);
+
+
+require_once('../core/dbconnexion.php');
+session_start();
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -15,12 +23,12 @@
 </head>
 <body>
     <header>
+        <?php
+            // On verifie si il y a une session si pas dessesion on affiche "Login" "register", si session on affiche le username
+            if (isset($_SESSION['id'])){
+        ?>
         <div class="head-left" >
             <button name="home" class="header-btn" type="button"><a href="http://localhost:3000/home">Home</a></button> 
-            <?php
-            // On verifie si il y a une session si pas dessesion on affiche "Login" "register", si session on affiche le username
-            if ($_SESSION['id']){
-            ?>
             <button name="profile" class="header-btn" type="button"><a href="http://localhost:3000/profile">Profile</a></button>
         </div>
 
@@ -31,23 +39,20 @@
         <div class="head-right">
             <button name="logout" class="header-btn" type="button"><a href="logout">Logout</a></button>
         </div>
-        
-            <?php
+        <?php
             } else {
-            ?>
-                <div class="head-left" >
-                <button name="home" class="header-btn" type="button"><a href="http://localhost:3000/home">Home</a></button> 
-                </div>
-
-                <div class="logo">
-                    <a href="http://localhost:3000/home"><img src="IMG/Logo.png" alt="Logo" height="300px"></a>
-                </div>
-
-                <div class="head-right">
-                <button name="login" class="header-btn" type="button"><a href="http://localhost:3000/login">Login</a></button>
-                <button name="register" class="header-btn" type="button"><a href="http://localhost:3000/register">Register</a></button>
-                </div>
-            <?php
+        ?>
+        <div class="head-left" >
+            <button name="home" class="header-btn" type="button"><a href="http://localhost:3000/home">Home</a></button> 
+        </div>
+        <div class="logo">
+                <a href="http://localhost:3000/home"><img src="IMG/Logo.png" alt="Logo" height="300px"></a>
+        </div>
+        <div class="head-right">
+            <button name="login" class="header-btn" type="button"><a href="http://localhost:3000/login">Login</a></button>
+            <button name="register" class="header-btn" type="button"><a href="http://localhost:3000/register">Register</a></button>
+        </div>
+        <?php
             }
-            ?>
+        ?>
     </header>
