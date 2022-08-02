@@ -6,7 +6,6 @@
     session_start();
 ?>
 
-	<h1>Welcome to the Home page!</h1>
 
 <?php
     // On récupère tout le contenu de la table Tags
@@ -19,17 +18,12 @@
     $allHikes->execute();
     $hikes = $allHikes->fetchAll();
 
+    // On verifie si il y a une session si pas dessesion on affiche "Login" "register", si session on affiche le username
     if (!$_SESSION['id']){
-        echo "<h1>tu n'est pas connecter</h1>";
-        echo '<br />';
         echo '<a href="login">Login</a>';
-        echo '<br />';
         echo '<a href="register">Register</a>';
     } else {
-        echo '<h1>tu es connecter</h1>';
-        echo '<br />';
         echo '<p>Oh hi <a href="profile">'.$_SESSION['username'].'</a>!</p>';
-        echo '<br />';
         echo '<a href="logout">Logout</a>';
     }
 ?>
@@ -41,19 +35,20 @@
         ?>
         <a href='#'><?php echo $tag['name']; }?></a>
     </div>
-    <div>
+    <div class="big-flex">
 
         <?php
+        // On affiche chaque hikes un à un
             foreach ($hikes as $hike) {
         ?>
-        <div>
-            <h3><?php echo $hike['name'];?></h3>
-            <h5><?php echo $hike['date'];?></h5>
-            <p>Distance : <?php echo $hike['distance'];?>Km</p>
-            <p>Duraction : <?php echo $hike['duration'];?>Minutes</p>
-            <p>Elevation gain : <?php echo $hike['elevation_gain'];?>%</p>
-            <p>Decription : <?php echo $hike['description'];?></p>
-            <p>Tag : <a href ='#'><?php echo $hike['tags'];?></a></p>
+        <div class="hikes-box">
+            <h3 class="hikes-box-h3"><?php echo $hike['name'];?></h3>
+            <h5 class="hikes-box-h5"><?php echo $hike['date'];?></h5>
+            <p class="hikes-box-p">Distance : <?php echo $hike['distance'];?>Km</p>
+            <p class="hikes-box-p">Duraction : <?php echo $hike['duration'];?>Minutes</p>
+            <p class="hikes-box-p">Elevation gain : <?php echo $hike['elevation_gain'];?>%</p>
+            <p class="hikes-box-p">Decription : <?php echo $hike['description'];?></p>
+            <p class="hikes-box-p">Tag : <a href ='#'><?php echo $hike['tags'];?></a></p>
         </div>
     <?php
     }
