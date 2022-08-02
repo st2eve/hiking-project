@@ -17,6 +17,7 @@
     <header>
         <div class="gauche" >
         <input type="button" src="http://localhost:3000/home" class="header-btn" value="home"/>
+        <button name="home" type="button" class="registerbtn">Register</button> 
         <?php
 
         if (isset($_SESSION['login']) && $_SESSION['login'] == true) {

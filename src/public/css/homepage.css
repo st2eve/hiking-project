@@ -1,6 +1,7 @@
 .flex {
     display: flex;
     justify-content: space-around;
+<<<<<<< HEAD
     margin: 25px;
     background-color: darkgreen;
     border-radius: 15px;
@@ -42,3 +43,6 @@
 }
 
 </style>
+=======
+}
+>>>>>>> 5034e0a66f9ef5c82f509c368096587f4d3c9a8b
