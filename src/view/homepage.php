@@ -33,7 +33,7 @@
             // On affiche chaque tags un à un
             foreach ($tags as $tag) {
         ?>
-        <a href='#'><?php echo $tag['name']; }?></a>
+        <a class="a-home" href='#'><?php echo $tag['name']; }?></a>
     </div>
     <div class="big-flex">
 
@@ -48,7 +48,7 @@
             <p class="hikes-box-p">Duraction : <?php echo $hike['duration'];?>Minutes</p>
             <p class="hikes-box-p">Elevation gain : <?php echo $hike['elevation_gain'];?>%</p>
             <p class="hikes-box-p">Decription : <?php echo $hike['description'];?></p>
-            <p class="hikes-box-p">Tag : <a href ='#'><?php echo $hike['tags'];?></a></p>
+            <p class="hikes-box-p">Tag : <a class="a-home" href ='#'><?php echo $hike['tags'];?></a></p>
         </div>
     <?php
     }

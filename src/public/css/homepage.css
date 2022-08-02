@@ -1,11 +1,10 @@
 .flex {
     display: flex;
     justify-content: space-around;
-<<<<<<< HEAD
     margin: 25px;
     background-color: darkgreen;
     border-radius: 15px;
-    padding: 6Px;
+    padding: 10px;
     color: white;
 }
 
@@ -19,11 +18,12 @@
 }
 
 .hikes-box {
-    height: 200px display: flex;
+    height: 250px;
+    width: 90vw;
     margin: 25px;
     background-color: darkgreen;
     border-radius: 15px;
-    padding: 6Px;
+    padding: 10Px;
     color: white;
 }
 
@@ -42,7 +42,17 @@
     font-size: medium;
 }
 
-</style>
-=======
+.a-home {
+    color: white;
+    text-decoration: none;
+    margin-bottom: 10px;
 }
->>>>>>> 5034e0a66f9ef5c82f509c368096587f4d3c9a8b
+
+.a-home:hover {
+    color: rgb(3, 175, 3);
+    text-decoration: underline;
+}
+
+.a-home:visited {
+    text-decoration: none;
+}
