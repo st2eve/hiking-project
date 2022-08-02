@@ -15,28 +15,18 @@
 </head>
 <body>
     <header>
-        <div class="gauche" >
-        <input type="button" src="http://localhost:3000/home" class="header-btn" value="home"/>
-        <button name="home" type="button" class="registerbtn">Register</button> 
-        <?php
-
-        if (isset($_SESSION['login']) && $_SESSION['login'] == true) {
-        
-           echo '<input type="button" src="http://localhost:3000/profile" class="header-btn"  value="Your Hikes"/>';
-        
-        }else{
-            echo '<input type="button" src="http://localhost:3000/profile" class="header-btn"  value="Your Hikes"/>';
-        }
-        ?>
+        <div class="head-left" >
+            <button name="home" class="header-btn" type="button"><a href="http://localhost:3000/home">Home</a></button> 
+            <button name="home" class="header-btn" type="button"><a href="http://localhost:3000/profile">Profile</a></button>
         </div>
 
         <div class="logo">
         <img src="IMG/Logo.png" alt="Logo" height="300px">
         </div>
 
-        <div class="droite">
-        <input type="button" src="http://localhost:3000/login" class="header-btn" value="Login"/>
-        <input type="button" src="http://localhost:3000/register" class="header-btn" value="Sign up"/>
+        <div class="head-right">
+        <button name="home" class="header-btn" type="button"><a href="http://localhost:3000/login">Login</a></button>
+        <button name="home" class="header-btn" type="button"><a href="http://localhost:3000/register">Register</a></button>
         </div>
         
     </header>
