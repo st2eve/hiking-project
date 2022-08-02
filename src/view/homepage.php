@@ -18,7 +18,7 @@
     $hikes = $allHikes->fetchAll();
 
     // On verifie si il y a une session si pas dessesion on affiche "Login" "register", si session on affiche le username
-    if (!$_SESSION['id']){
+    if (!isset($_SESSION['id'])){
         echo '<a href="login">Login</a>';
         echo '<a href="register">Register</a>';
     } else {

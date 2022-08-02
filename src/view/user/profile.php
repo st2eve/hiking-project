@@ -6,8 +6,16 @@ ini_set("display_errors", 1);
 require '../view/includes/header.php';
 require '../core/dbconnexion.php';
 
-
 if (isset($_SESSION['id'])){
+
+  $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+  $components = parse_url($url);
+  parse_str($components['query'], $results);
+
+  if($_SESSION['username'] != $results['user']){
+    @session_destroy();
+    header('location: http://localhost:3000/login');
+  }
 
 // On récupère tout le contenu de la table Tags
 $allTags = $connect->prepare('SELECT * FROM Tags');
@@ -23,11 +31,12 @@ if(!empty($_POST)){
   $hikeelevation=$_POST['hikeelevation'];
   $hikedesc=$_POST['hikedesc'];
   $tagsCheckbox = implode(',', $_POST['tagsCheckbox']);
+  $userID = $_POST[$_SESSION['id']];
 
-  $hikesql = "INSERT INTO hikes (name, date, distance, duration, elevation_gain, description, tags)
-  VALUES (?, ?, ?, ?, ?, ?, ?)";
+  $hikesql = "INSERT INTO hikes (name, date, distance, duration, elevation_gain, description, tags, userID)
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
-  $hikevalues = array($_POST['hikename'], $_POST['hikeDate'], $_POST['hikedistance'], $_POST['hikeduration'], $_POST['hikeelevation'], $_POST['hikedesc'], implode(',', $_POST['tagsCheckbox']));
+  $hikevalues = array($_POST['hikename'], $_POST['hikeDate'], $_POST['hikedistance'], $_POST['hikeduration'], $_POST['hikeelevation'], $_POST['hikedesc'], implode(',', $_POST['tagsCheckbox']), $_POST[$_SESSION['id']]);
 
   $hikestatement = $connect->prepare($hikesql);
 
@@ -37,7 +46,7 @@ if(!empty($_POST)){
   $hikeiD->execute();
 
 
-  header('location: http://localhost:3000/profile');
+  header("Location: http://localhost:3000/profile?user=".$_SESSION['username']);
 
 }else{
 ?>
@@ -47,6 +56,7 @@ if(!empty($_POST)){
 <?php
   echo '<p class="main-empty">No empty field authorized</p>';
 }
+echo '<p>Oh hi <a href="profile">'.$_SESSION['username'].'</a>!</p>';
 ?>
 
         <form action="" method="POST" class="main-form">
@@ -90,7 +100,7 @@ if(!empty($_POST)){
   </body>
   <?php
   }else{
-    echo 'pas connecté';
+    header('location: http://localhost:3000/login');
   }
   require '../view/includes/footer.php';
   ?>
