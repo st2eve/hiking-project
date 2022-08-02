@@ -6,6 +6,9 @@ ini_set("display_errors", 1);
 require '../view/includes/header.php';
 require '../core/dbconnexion.php';
 
+
+if (isset($_SESSION['id'])){
+
 // On récupère tout le contenu de la table Tags
 $allTags = $connect->prepare('SELECT * FROM Tags');
 $allTags->execute();
@@ -86,5 +89,8 @@ if(!empty($_POST)){
     </div>
   </body>
   <?php
+  }else{
+    echo 'pas connecté';
+  }
   require '../view/includes/footer.php';
   ?>

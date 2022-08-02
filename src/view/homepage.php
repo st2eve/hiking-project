@@ -3,7 +3,6 @@
 
     require 'includes/header.php';
     require_once('../core/dbconnexion.php');
-    session_start();
 ?>
 
 
