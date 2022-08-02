@@ -10,8 +10,11 @@ header {
   justify-content: space-between;
 }
 
-.gauche {
-  padding-left: 50px;
+.head-left {
+  width: 25%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
 }
 
 .home {
@@ -19,6 +22,74 @@ header {
   height: 10px;
 }
 
-.droite {
-  padding-right: 50px;
+.head-right {
+  width: 25%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+}
+.head-left .header-btn {
+  background-color: whitesmoke;
+  border: 1px solid rgb(25, 25, 25);
+	-webkit-animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s both;
+	        animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s both;
+}
+.head-left a{
+  font-size: 1.5vw;
+  text-decoration: none;
+  font-family: 'Roboto Mono', monospace;
+  color:  rgb(25, 25, 25);
+}
+.head-right .header-btn {
+  background-color: whitesmoke;
+  border: 1px solid rgb(25, 25, 25);
+	-webkit-animation: slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s both;
+	        animation: slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s both;
+}
+.head-right a{
+  font-size: 1.5vw;
+  text-decoration: none;
+  font-family: 'Roboto Mono', monospace;
+  color:  rgb(25, 25, 25);
+}
+
+@-webkit-keyframes slide-right {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(100px);
+            transform: translateX(100px);
+  }
+}
+@keyframes slide-right {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(100px);
+            transform: translateX(100px);
+  }
+}
+@-webkit-keyframes slide-left {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(-100px);
+            transform: translateX(-100px);
+  }
+}
+@keyframes slide-left {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(-100px);
+            transform: translateX(-100px);
+  }
 }

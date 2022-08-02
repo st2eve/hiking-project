@@ -5,10 +5,7 @@
     margin: 15px;
 }
 .addhikebtn{
-    height: 50px;
-    min-width: 100px;
     align-self: center;
-    border-radius: 10px;
     font-size: 25px;
 }
 .addhikebtn:hover{
