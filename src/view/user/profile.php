@@ -56,6 +56,12 @@ if(!empty($_POST)){
 <?php
   echo '<p class="main-empty">No empty field authorized</p>';
 }
+
+// On récupère tout le contenu de la table Hikes lié à l'utilisateur connecté
+$allHikes = $connect->prepare('SELECT * FROM hikes WHERE userID='.$_SESSION['id']);
+$allHikes->execute();
+$hikes = $allHikes->fetchAll();
+
 ?>
 
         <form action="" method="POST" class="main-form">
@@ -99,6 +105,28 @@ if(!empty($_POST)){
                 
             </div>
         </form>
+    </div>
+    <div class="hikes-profile">
+        <?php
+        // On affiche chaque hikes un à un
+            foreach ($hikes as $hike) {
+        ?>
+        <div class="hikes-box">
+            <div class="hikes-box-icon">
+            <a href="http://localhost:3000/update-hike?user=<?php echo $_SESSION['username'] ?>"><img src="../IMG/editer.png" alt="edit"></a>
+              <img src="../IMG/supprimer.png" alt="delete">
+            </div>
+            <h3 class="hikes-box-h3"><?php echo $hike['name'];?></h3>
+            <h5 class="hikes-box-h5"><?php echo $hike['date'];?></h5>
+            <p class="hikes-box-p">Distance : <?php echo $hike['distance'];?>Km</p>
+            <p class="hikes-box-p">Duraction : <?php echo $hike['duration'];?>Minutes</p>
+            <p class="hikes-box-p">Elevation gain : <?php echo $hike['elevation_gain'];?>%</p>
+            <p class="hikes-box-p">Decription : <?php echo $hike['description'];?></p>
+            <p class="hikes-box-p">Tag : <a href ='#'><?php echo $hike['tags'];?></a></p>
+        </div>
+    <?php
+    }
+    ?>
     </div>
   </body>
   <?php

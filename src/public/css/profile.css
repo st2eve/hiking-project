@@ -34,3 +34,12 @@
 .form-session{
     margin-bottom: 20px;
 }
+.hikes-box-icon{
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+.hikes-box-icon img{
+    width: 20px;
+    height: 20px;
+}
