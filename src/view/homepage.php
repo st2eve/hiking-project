@@ -3,7 +3,6 @@
 
     require 'includes/header.php';
     require_once('../core/dbconnexion.php');
-    session_start();
 ?>
 
 
@@ -17,6 +16,15 @@
     $allHikes = $connect->prepare('SELECT * FROM hikes');
     $allHikes->execute();
     $hikes = $allHikes->fetchAll();
+
+    // On verifie si il y a une session si pas dessesion on affiche "Login" "register", si session on affiche le username
+    if (!isset($_SESSION['id'])){
+        echo '<a href="login">Login</a>';
+        echo '<a href="register">Register</a>';
+    } else {
+        echo '<p>Oh hi <a href="profile">'.$_SESSION['username'].'</a>!</p>';
+        echo '<a href="logout">Logout</a>';
+    }
 ?>
 
     <div class="flex">

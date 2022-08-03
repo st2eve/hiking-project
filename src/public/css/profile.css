@@ -1,3 +1,6 @@
+.main-form{
+    margin-bottom: 20px;
+}
 .main-empty{
     font-size: 15px;
     color: red;
@@ -16,4 +19,27 @@
 .label-tags{
     align-self: center;
     margin-top: 20px;
+}
+.container-tags{
+    height: 30px;
+    display: flex;
+    gap: 10px;
+}
+.container-tags .label-tags{
+    margin: 0;
+}
+.container-tags input{
+    margin: 0;
+}
+.form-session{
+    margin-bottom: 20px;
+}
+.hikes-box-icon{
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+.hikes-box-icon img{
+    width: 20px;
+    height: 20px;
 }

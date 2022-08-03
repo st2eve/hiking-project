@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 
 require_once('../core/dbconnexion.php');
-session_start();
+@session_start();
 ?>
 
 <!doctype html>
@@ -25,11 +25,11 @@ session_start();
     <header>
         <?php
             // On verifie si il y a une session si pas dessesion on affiche "Login" "register", si session on affiche le username
-            if (isset($_SESSION['id'])){
+            if (isset($_SESSION['username'])){
         ?>
         <div class="head-left" >
             <button name="home" class="header-btn" type="button"><a href="http://localhost:3000/home">Home</a></button> 
-            <button name="profile" class="header-btn" type="button"><a href="http://localhost:3000/profile">Profile</a></button>
+            <button name="profile" class="header-btn" type="button"><a href="http://localhost:3000/profile?user=<?php echo $_SESSION['username'] ?>">Profile</a></button>
         </div>
 
         <div class="logo">
