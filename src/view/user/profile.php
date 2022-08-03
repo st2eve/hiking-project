@@ -36,7 +36,7 @@ if(!empty($_POST)){
   $hikesql = "INSERT INTO hikes (name, date, distance, duration, elevation_gain, description, tags, userID)
   VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
-  $hikevalues = array($_POST['hikename'], $_POST['hikeDate'], $_POST['hikedistance'], $_POST['hikeduration'], $_POST['hikeelevation'], $_POST['hikedesc'], implode(',', $_POST['tagsCheckbox']), $_POST[$_SESSION['id']]);
+  $hikevalues = array($_POST['hikename'], $_POST['hikeDate'], $_POST['hikedistance'], $_POST['hikeduration'], $_POST['hikeelevation'], $_POST['hikedesc'], implode(',', $_POST['tagsCheckbox']), $_SESSION['id']);
 
   $hikestatement = $connect->prepare($hikesql);
 
@@ -56,11 +56,11 @@ if(!empty($_POST)){
 <?php
   echo '<p class="main-empty">No empty field authorized</p>';
 }
-echo '<p>Oh hi <a href="profile">'.$_SESSION['username'].'</a>!</p>';
 ?>
 
         <form action="" method="POST" class="main-form">
             <div class="form-container">
+                <p class="form-session">Oh hi <a href="profile"><?php echo $_SESSION['username'] ?></a>!</p>
                 <h1>Add Hike</h1>
                 <p>Please fill in this form to create a Hike.</p>
                 <hr>
@@ -82,15 +82,18 @@ echo '<p>Oh hi <a href="profile">'.$_SESSION['username'].'</a>!</p>';
 
                 <label for="hikedesc"><b>Description</b></label>
                 <input type="text" placeholder="Enter a Description" name="hikedesc" class="form-hikedesc" required>
-                <?php 
-                    // On affiche chaque tags un à un
-                    foreach ($tags as $tag) {
-                ?>
-                <label class="label-tags" for="checkbox"><b><?php echo $tag['name'];?></b></label>
-                <input type="checkbox" name="tagsCheckbox[]" value="<?php echo $tag['name'];?>">
-                <?php
-                  }
-                ?>
+
+                <div class="container-tags"> 
+                  <?php 
+                      // On affiche chaque tags un à un
+                      foreach ($tags as $tag) {
+                  ?>
+                  <label class="label-tags" for="checkbox"><b><?php echo $tag['name'];?></b></label>
+                  <input type="checkbox" name="tagsCheckbox[]" value="<?php echo $tag['name'];?>">
+                  <?php
+                    }
+                  ?>
+                </div>
 
                 <button name="submit" type="submit" class="addhikebtn">Add a Hike</button>
                 
