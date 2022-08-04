@@ -22,9 +22,6 @@ $allTags = $connect->prepare('SELECT * FROM Tags');
 $allTags->execute();
 $tags = $allTags->fetchAll();
 
-// On verifie si il y a une session si pas dessesion on affiche "Login" "register", si session on affiche le username
-if (isset($_SESSION['id'])){
-
 if(!empty($_POST)){
   
   $hikename=$_POST['hikename'];
@@ -92,45 +89,24 @@ $hikes = $allHikes->fetchAll();
 
                 <label for="hikedesc"><b>Description</b></label>
                 <input type="text" placeholder="Enter a Description" name="hikedesc" class="form-hikedesc" required>
-                <div class="profil-div-tag">
-                <?php 
-                    // On affiche chaque tags un à un
-                    foreach ($tags as $tag) {
-                ?>
-                <div class="flex-div-div">
+
+                <div class="container-tags"> 
+                  <?php 
+                      // On affiche chaque tags un à un
+                      foreach ($tags as $tag) {
+                  ?>
                   <label class="label-tags" for="checkbox"><b><?php echo $tag['name'];?></b></label>
                   <input type="checkbox" name="tagsCheckbox[]" value="<?php echo $tag['name'];?>">
+                  <?php
+                    }
+                  ?>
                 </div>
-                <?php
-                  }
-                ?>
-                </div>
+
                 <button name="submit" type="submit" class="addhikebtn">Add a Hike</button>
                 
             </div>
         </form>
     </div>
-
-    <?php
-  // On récupère tout le contenu de la table Tags
-    $allTags = $connect->prepare('SELECT * FROM Tags');
-    $allTags->execute();
-    $tags = $allTags->fetchAll();
-  // On récupère tout le contenu de la table Hikes
-    $allHikes = $connect->prepare('SELECT * FROM hikes');
-    $allHikes->execute();
-    $hikes = $allHikes->fetchAll();
-?>
-
-<div class="flex">
-        <?php
-            // On affiche chaque tags un à un
-            foreach ($tags as $tag) {
-        ?>
-        <a class="a-home" href='#'><?php echo $tag['name']; }?></a>
-    </div>
-    <div class="big-flex">
-
     <div class="hikes-profile">
         <?php
         // On affiche chaque hikes un à un
@@ -145,9 +121,6 @@ $hikes = $allHikes->fetchAll();
             <h5 class="hikes-box-h5"><?php echo $hike['date'];?></h5>
             <p class="hikes-box-p">Distance : <?php echo $hike['distance'];?>Km</p>
             <p class="hikes-box-p">Duraction : <?php echo $hike['duration'];?>Minutes</p>
-            <p class="hikes-box-p">Elevation gain : <?php echo $hike['elevation_gain'];?>m</p>
-            <p class="hikes-box-p">Decription : <?php echo $hike['description'];?></p>
-            <p class="hikes-box-p">Tag : <a class="a-home" href ='#'><?php echo $hike['tags'];?></a></p>
             <p class="hikes-box-p">Elevation gain : <?php echo $hike['elevation_gain'];?>%</p>
             <p class="hikes-box-p">Decription : <?php echo $hike['description'];?></p>
             <p class="hikes-box-p">Tag : <a href ='#'><?php echo $hike['tags'];?></a></p>
@@ -155,60 +128,8 @@ $hikes = $allHikes->fetchAll();
     <?php
     }
     ?>
-
     </div>
-
   </body>
-  <?php
-    } else {
-?>
-<body>
-  <p>Your are not connected</p>
-
-<?php
-  // On récupère tout le contenu de la table Tags
-    $allTags = $connect->prepare('SELECT * FROM Tags');
-    $allTags->execute();
-    $tags = $allTags->fetchAll();
-  // On récupère tout le contenu de la table Hikes
-    $allHikes = $connect->prepare('SELECT * FROM hikes');
-    $allHikes->execute();
-    $hikes = $allHikes->fetchAll();
-?>
-
-<div class="flex">
-        <?php
-            // On affiche chaque tags un à un
-            foreach ($tags as $tag) {
-        ?>
-        <a class="a-home" href='#'><?php echo $tag['name']; }?></a>
-    </div>
-    <div class="big-flex">
-
-        <?php
-        // On affiche chaque hikes un à un
-            foreach ($hikes as $hike) {
-        ?>
-        <div class="hikes-box">
-            <h3 class="hikes-box-h3"><?php echo $hike['name'];?></h3>
-            <h5 class="hikes-box-h5"><?php echo $hike['date'];?></h5>
-            <p class="hikes-box-p">Distance : <?php echo $hike['distance'];?>Km</p>
-            <p class="hikes-box-p">Duraction : <?php echo $hike['duration'];?>Minutes</p>
-            <p class="hikes-box-p">Elevation gain : <?php echo $hike['elevation_gain'];?>m</p>
-            <p class="hikes-box-p">Decription : <?php echo $hike['description'];?></p>
-            <p class="hikes-box-p">Tag : <a class="a-home" href ='#'><?php echo $hike['tags'];?></a></p>
-        </div>
-    <?php
-    }
-    ?>
-
-    </div>
-
-</body>
-<?php
-            }
-        ?>
-    </div>
   <?php
   }else{
     header('location: http://localhost:3000/login');
