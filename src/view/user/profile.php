@@ -62,10 +62,6 @@ $allHikes = $connect->prepare('SELECT * FROM hikes WHERE userID='.$_SESSION['id'
 $allHikes->execute();
 $hikes = $allHikes->fetchAll();
 
-function deleteHike(){
-  $delete = $connect->prepare('DELETE FROM hikes WHERE hikeID='.$hike['hikeID']);
-  $delete->execute();
-}
 
 ?>
 
@@ -118,8 +114,8 @@ function deleteHike(){
         ?>
         <div class="hikes-box">
             <div class="hikes-box-icon">
-            <a href="http://localhost:3000/update-hike?user=<?php echo $_SESSION['username'] ?>&id=<?php echo $hike['hikeID'] ?>"><img src="../IMG/editer.png" alt="edit"></a>
-              <a onclick="deleteHike()"><img src="../IMG/supprimer.png" alt="delete"></a>
+              <a href="http://localhost:3000/update-hike?user=<?php echo $_SESSION['username'] ?>&id=<?php echo $hike['hikeID'] ?>"><img src="../IMG/editer.png" alt="edit"></a>
+              <a href="http://localhost:3000/delete?id=<?php echo $hike['hikeID'] ?>" onclick="javascript: return confirm('Are you SURE you want to DELETE this Hike ?');"><img src="../IMG/supprimer.png" alt="delete"></a>
             </div>
             <h3 class="hikes-box-h3"><?php echo $hike['name'];?></h3>
             <h5 class="hikes-box-h5"><?php echo $hike['date'];?></h5>

@@ -18,6 +18,7 @@ $routes = [
         '/register' => 'view/user/register.php',
         '/sessiontest' => 'view/user/sessiontest.php',
         '/logout' => 'view/user/logout.php',
+        '/delete' => 'view/user/delete.php',
 
     ],
     // Routes de la méthode POST
@@ -26,5 +27,6 @@ $routes = [
         '/profile' => 'view/user/profile.php',
         '/update-hike' => 'view/user/update.php',
         '/login' => 'view/user/login.php',
+        '/delete' => 'view/user/delete.php',
     ],
 ];
