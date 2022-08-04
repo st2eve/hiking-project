@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 /*
  * Ici, on définit les routes de notre application.
  * Nouvelle page ? => Nouvelle route
@@ -14,6 +14,7 @@ $routes = [
         '/404' => 'view/404.php',
         '/login' => 'view/user/login.php',
         '/profile' => 'view/user/profile.php',
+        '/update-hike' => 'view/user/update.php',
         '/register' => 'view/user/register.php',
         '/sessiontest' => 'view/user/sessiontest.php',
         '/logout' => 'view/user/logout.php',
@@ -22,7 +23,8 @@ $routes = [
     // Routes de la méthode POST
     'POST' => [
         '/register' => 'view/user/register.php',
-        '/profile/:id' => 'view/user/profile.php',
+        '/profile' => 'view/user/profile.php',
+        '/update-hike' => 'view/user/update.php',
         '/login' => 'view/user/login.php',
     ],
 ];

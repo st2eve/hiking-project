@@ -6,6 +6,17 @@ ini_set("display_errors", 1);
 require '../view/includes/header.php';
 require '../core/dbconnexion.php';
 
+if (isset($_SESSION['id'])){
+
+  $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+  $components = parse_url($url);
+  parse_str($components['query'], $results);
+
+  if($_SESSION['username'] != $results['user']){
+    @session_destroy();
+    header('location: http://localhost:3000/login');
+  }
+
 // On récupère tout le contenu de la table Tags
 $allTags = $connect->prepare('SELECT * FROM Tags');
 $allTags->execute();
@@ -23,11 +34,12 @@ if(!empty($_POST)){
   $hikeelevation=$_POST['hikeelevation'];
   $hikedesc=$_POST['hikedesc'];
   $tagsCheckbox = implode(',', $_POST['tagsCheckbox']);
+  $userID = $_POST[$_SESSION['id']];
 
-  $hikesql = "INSERT INTO hikes (name, date, distance, duration, elevation_gain, description, tags)
-  VALUES (?, ?, ?, ?, ?, ?, ?)";
+  $hikesql = "INSERT INTO hikes (name, date, distance, duration, elevation_gain, description, tags, userID)
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
-  $hikevalues = array($_POST['hikename'], $_POST['hikeDate'], $_POST['hikedistance'], $_POST['hikeduration'], $_POST['hikeelevation'], $_POST['hikedesc'], implode(',', $_POST['tagsCheckbox']));
+  $hikevalues = array($_POST['hikename'], $_POST['hikeDate'], $_POST['hikedistance'], $_POST['hikeduration'], $_POST['hikeelevation'], $_POST['hikedesc'], implode(',', $_POST['tagsCheckbox']), $_SESSION['id']);
 
   $hikestatement = $connect->prepare($hikesql);
 
@@ -37,7 +49,7 @@ if(!empty($_POST)){
   $hikeiD->execute();
 
 
-  header('location: http://localhost:3000/profile');
+  header("Location: http://localhost:3000/profile?user=".$_SESSION['username']);
 
 }else{
 ?>
@@ -47,10 +59,17 @@ if(!empty($_POST)){
 <?php
   echo '<p class="main-empty">No empty field authorized</p>';
 }
+
+// On récupère tout le contenu de la table Hikes lié à l'utilisateur connecté
+$allHikes = $connect->prepare('SELECT * FROM hikes WHERE userID='.$_SESSION['id']);
+$allHikes->execute();
+$hikes = $allHikes->fetchAll();
+
 ?>
 
         <form action="" method="POST" class="main-form">
             <div class="form-container">
+                <p class="form-session">Oh hi <a href="profile"><?php echo $_SESSION['username'] ?></a>!</p>
                 <h1>Add Hike</h1>
                 <p>Please fill in this form to create a Hike.</p>
                 <hr>
@@ -72,6 +91,7 @@ if(!empty($_POST)){
 
                 <label for="hikedesc"><b>Description</b></label>
                 <input type="text" placeholder="Enter a Description" name="hikedesc" class="form-hikedesc" required>
+<<<<<<< HEAD
                 <div class="profil-div-tag">
                 <?php 
                     // On affiche chaque tags un à un
@@ -85,11 +105,27 @@ if(!empty($_POST)){
                   }
                 ?>
                 </div>
+=======
+
+                <div class="container-tags"> 
+                  <?php 
+                      // On affiche chaque tags un à un
+                      foreach ($tags as $tag) {
+                  ?>
+                  <label class="label-tags" for="checkbox"><b><?php echo $tag['name'];?></b></label>
+                  <input type="checkbox" name="tagsCheckbox[]" value="<?php echo $tag['name'];?>">
+                  <?php
+                    }
+                  ?>
+                </div>
+
+>>>>>>> 963c9ef1b33c08fbf7fc662917dc664785a49dbe
                 <button name="submit" type="submit" class="addhikebtn">Add a Hike</button>
                 
             </div>
         </form>
     </div>
+<<<<<<< HEAD
 
     <?php
   // On récupère tout le contenu de la table Tags
@@ -111,22 +147,39 @@ if(!empty($_POST)){
     </div>
     <div class="big-flex">
 
+=======
+    <div class="hikes-profile">
+>>>>>>> 963c9ef1b33c08fbf7fc662917dc664785a49dbe
         <?php
         // On affiche chaque hikes un à un
             foreach ($hikes as $hike) {
         ?>
         <div class="hikes-box">
+<<<<<<< HEAD
+=======
+            <div class="hikes-box-icon">
+            <a href="http://localhost:3000/update-hike?user=<?php echo $_SESSION['username'] ?>"><img src="../IMG/editer.png" alt="edit"></a>
+              <img src="../IMG/supprimer.png" alt="delete">
+            </div>
+>>>>>>> 963c9ef1b33c08fbf7fc662917dc664785a49dbe
             <h3 class="hikes-box-h3"><?php echo $hike['name'];?></h3>
             <h5 class="hikes-box-h5"><?php echo $hike['date'];?></h5>
             <p class="hikes-box-p">Distance : <?php echo $hike['distance'];?>Km</p>
             <p class="hikes-box-p">Duraction : <?php echo $hike['duration'];?>Minutes</p>
+<<<<<<< HEAD
             <p class="hikes-box-p">Elevation gain : <?php echo $hike['elevation_gain'];?>m</p>
             <p class="hikes-box-p">Decription : <?php echo $hike['description'];?></p>
             <p class="hikes-box-p">Tag : <a class="a-home" href ='#'><?php echo $hike['tags'];?></a></p>
+=======
+            <p class="hikes-box-p">Elevation gain : <?php echo $hike['elevation_gain'];?>%</p>
+            <p class="hikes-box-p">Decription : <?php echo $hike['description'];?></p>
+            <p class="hikes-box-p">Tag : <a href ='#'><?php echo $hike['tags'];?></a></p>
+>>>>>>> 963c9ef1b33c08fbf7fc662917dc664785a49dbe
         </div>
     <?php
     }
     ?>
+<<<<<<< HEAD
 
     </div>
 
@@ -181,5 +234,13 @@ if(!empty($_POST)){
             }
         ?>
   <?php
+=======
+    </div>
+  </body>
+  <?php
+  }else{
+    header('location: http://localhost:3000/login');
+  }
+>>>>>>> 963c9ef1b33c08fbf7fc662917dc664785a49dbe
   require '../view/includes/footer.php';
   ?>
