@@ -17,7 +17,7 @@ $routes = [
         '/update-hike' => 'view/user/update.php',
         '/register' => 'view/user/register.php',
         '/sessiontest' => 'view/user/sessiontest.php',
-        '/logout' => 'view/user/logout.php',
+        'https://one-more-hike.herokuapp.com/login' => 'view/user/logout.php',
         '/delete' => 'view/user/delete.php',
 
     ],
