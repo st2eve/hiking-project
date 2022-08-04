@@ -37,7 +37,7 @@
             <h5 class="hikes-box-h5"><?php echo $hike['date'];?></h5>
             <p class="hikes-box-p">Distance : <?php echo $hike['distance'];?>Km</p>
             <p class="hikes-box-p">Duraction : <?php echo $hike['duration'];?>Minutes</p>
-            <p class="hikes-box-p">Elevation gain : <?php echo $hike['elevation_gain'];?>%</p>
+            <p class="hikes-box-p">Elevation gain : <?php echo $hike['elevation_gain'];?>m</p>
             <p class="hikes-box-p">Decription : <?php echo $hike['description'];?></p>
             <p class="hikes-box-p">Tag : <a class="a-home" href ='#'><?php echo $hike['tags'];?></a></p>
         </div>
