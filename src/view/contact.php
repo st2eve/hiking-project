@@ -1,13 +1,11 @@
 <?php
     declare(strict_types=1);
-    error_reporting(E_ALL);
-    ini_set("display_errors", 1);
+    error_reporting(-1);
+    ini_set('display_errors', 'On');
+    set_error_handler("var_dump");
 
     require 'includes/header.php';
 
-
-
-   
 
     if (!empty($_POST)) {
         $mailAdmin = "houbart.steeve@gmail.com";
@@ -17,16 +15,23 @@
         $sujet = $_POST['sujet'];
         $message = $_POST['message'];
         $headers = 'From: '.$email."\r\n";
+
+        mail($mailAdmin, $sujet, $message);
+
+        if(mail($mailAdmin, $sujet, $message)){
+            
+                echo "Message accepted";
+            }
+            else
+            {
+                echo "Error: Message not accepted";
+            }
         
-        $success = mail($mailAdmin, $sujet, $message, $headers);
 
-        if (!$success) {
-            $errorMessage = error_get_last()['message'];
-        }
+        //header('location: http://localhost:3000/home');
 
-        header('location: http://localhost:3000/home');
     }
-
+    
 ?>
 
 <div class="main-block">
