@@ -5,26 +5,24 @@
     require_once('../core/dbconnexion.php');
 ?>
 
-
 <?php
     // On récupère tout le contenu de la table Tags
     $allTags = $connect->prepare('SELECT * FROM Tags');
     $allTags->execute();
     $tags = $allTags->fetchAll();
 
-     // On récupère tout le contenu de la table Hikes
-    $allHikes = $connect->prepare('SELECT * FROM hikes');
-    $allHikes->execute();
-    $hikes = $allHikes->fetchAll();
-
-    // On verifie si il y a une session si pas dessesion on affiche "Login" "register", si session on affiche le username
-    if (!isset($_SESSION['id'])){
-        echo '<a href="login">Login</a>';
-        echo '<a href="register">Register</a>';
-    } else {
-        echo '<p>Oh hi <a href="profile">'.$_SESSION['username'].'</a>!</p>';
-        echo '<a href="logout">Logout</a>';
-    }
+    // On check si l'user na pas fais une rechere par tag si oui on afiche seulmnt le tag en question 
+    if (isset($_GET['tag'])){
+        $tagset = $_GET['tag'];
+        $allHikes = $connect->prepare("SELECT * FROM hikes WHERE tags LIKE '%$tagset'");
+        $allHikes->execute();
+        $hikes = $allHikes->fetchAll();
+        // On récupère tout le contenu de la table Hikes
+     } else {
+        $allHikes = $connect->prepare('SELECT * FROM hikes');
+        $allHikes->execute();
+        $hikes = $allHikes->fetchAll();
+     }
 ?>
 
     <div class="flex">
@@ -32,7 +30,7 @@
             // On affiche chaque tags un à un
             foreach ($tags as $tag) {
         ?>
-        <a class="a-home" href='#'><?php echo $tag['name']; }?></a>
+        <a class="a-home" href='home?tag=<?php echo $tag["name"]?>'><?php echo $tag['name']; }?></a>
     </div>
     <div class="big-flex">
 
