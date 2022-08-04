@@ -91,7 +91,6 @@ $hikes = $allHikes->fetchAll();
 
                 <label for="hikedesc"><b>Description</b></label>
                 <input type="text" placeholder="Enter a Description" name="hikedesc" class="form-hikedesc" required>
-<<<<<<< HEAD
                 <div class="profil-div-tag">
                 <?php 
                     // On affiche chaque tags un à un
@@ -105,27 +104,11 @@ $hikes = $allHikes->fetchAll();
                   }
                 ?>
                 </div>
-=======
-
-                <div class="container-tags"> 
-                  <?php 
-                      // On affiche chaque tags un à un
-                      foreach ($tags as $tag) {
-                  ?>
-                  <label class="label-tags" for="checkbox"><b><?php echo $tag['name'];?></b></label>
-                  <input type="checkbox" name="tagsCheckbox[]" value="<?php echo $tag['name'];?>">
-                  <?php
-                    }
-                  ?>
-                </div>
-
->>>>>>> 963c9ef1b33c08fbf7fc662917dc664785a49dbe
                 <button name="submit" type="submit" class="addhikebtn">Add a Hike</button>
                 
             </div>
         </form>
     </div>
-<<<<<<< HEAD
 
     <?php
   // On récupère tout le contenu de la table Tags
@@ -147,39 +130,30 @@ $hikes = $allHikes->fetchAll();
     </div>
     <div class="big-flex">
 
-=======
     <div class="hikes-profile">
->>>>>>> 963c9ef1b33c08fbf7fc662917dc664785a49dbe
         <?php
         // On affiche chaque hikes un à un
             foreach ($hikes as $hike) {
         ?>
         <div class="hikes-box">
-<<<<<<< HEAD
-=======
             <div class="hikes-box-icon">
             <a href="http://localhost:3000/update-hike?user=<?php echo $_SESSION['username'] ?>"><img src="../IMG/editer.png" alt="edit"></a>
               <img src="../IMG/supprimer.png" alt="delete">
             </div>
->>>>>>> 963c9ef1b33c08fbf7fc662917dc664785a49dbe
             <h3 class="hikes-box-h3"><?php echo $hike['name'];?></h3>
             <h5 class="hikes-box-h5"><?php echo $hike['date'];?></h5>
             <p class="hikes-box-p">Distance : <?php echo $hike['distance'];?>Km</p>
             <p class="hikes-box-p">Duraction : <?php echo $hike['duration'];?>Minutes</p>
-<<<<<<< HEAD
             <p class="hikes-box-p">Elevation gain : <?php echo $hike['elevation_gain'];?>m</p>
             <p class="hikes-box-p">Decription : <?php echo $hike['description'];?></p>
             <p class="hikes-box-p">Tag : <a class="a-home" href ='#'><?php echo $hike['tags'];?></a></p>
-=======
             <p class="hikes-box-p">Elevation gain : <?php echo $hike['elevation_gain'];?>%</p>
             <p class="hikes-box-p">Decription : <?php echo $hike['description'];?></p>
             <p class="hikes-box-p">Tag : <a href ='#'><?php echo $hike['tags'];?></a></p>
->>>>>>> 963c9ef1b33c08fbf7fc662917dc664785a49dbe
         </div>
     <?php
     }
     ?>
-<<<<<<< HEAD
 
     </div>
 
@@ -233,14 +207,10 @@ $hikes = $allHikes->fetchAll();
 <?php
             }
         ?>
-  <?php
-=======
     </div>
-  </body>
   <?php
   }else{
     header('location: http://localhost:3000/login');
   }
->>>>>>> 963c9ef1b33c08fbf7fc662917dc664785a49dbe
   require '../view/includes/footer.php';
   ?>
