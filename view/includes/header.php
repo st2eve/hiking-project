@@ -18,7 +18,7 @@ require_once('core/dbconnexion.php');
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
     />
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="public/css/main.css">
     <title>One more Hike</title>
 </head>
 <body>
