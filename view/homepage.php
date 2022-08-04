@@ -2,7 +2,7 @@
     declare(strict_types=1);
 
     require 'includes/header.php';
-    require_once('../core/dbconnexion.php');
+    require_once('core/dbconnexion.php');
 ?>
 
 
