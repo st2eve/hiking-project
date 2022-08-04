@@ -1,0 +1,50 @@
+.psw-error{
+    font-size: 15px;
+    color: red;
+    font-weight: bold;
+    margin: 15px;
+}
+.main-block{
+    background-image: url('../IMG/Home.png');
+    background-attachment: fixed;
+    background-position: initial;
+    background-repeat: no-repeat;
+    background-color: whitesmoke;
+    padding: 15px;
+}
+
+.main-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.form-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.form-container h1{
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.form-container input{
+    height: 30px;
+    border-radius: 10px;
+}
+.form-conditions{
+    margin-bottom: 15px;
+}
+.signin{
+    text-align: center;
+}
+.registerbtn{
+    align-self: center;
+    font-size: 25px;
+}
+.registerbtn:hover{
+    background-color: whitesmoke;
+    box-shadow: 2px 2px rgb(25, 25, 25);
+    cursor: pointer;
+}

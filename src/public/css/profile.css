@@ -1,0 +1,75 @@
+.main-form {
+    margin-bottom: 20px;
+}
+
+.main-empty {
+    >>>>>>>963c9ef1b33c08fbf7fc662917dc664785a49dbe font-size: 15px;
+    color: red;
+    font-weight: bold;
+    margin: 15px;
+}
+
+.addhikebtn {
+    align-self: center;
+    font-size: 25px;
+}
+
+.addhikebtn:hover {
+    background-color: whitesmoke;
+    box-shadow: 2px 2px rgb(25, 25, 25);
+    cursor: pointer;
+}
+
+.label-tags {
+    align-self: center;
+    margin-top: 20px;
+}
+
+.profil-div-tag {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: space-around;
+    height: 100px;
+    width: 90vw;
+}
+
+.flex-div-div {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline;
+    align-items: center;
+
+    .container-tags {
+        height: 30px;
+        display: flex;
+        gap: 10px;
+    }
+
+    .container-tags .label-tags {
+        margin: 0;
+    }
+
+    .container-tags input {
+        margin: 0;
+    }
+
+    .form-session {
+        margin-bottom: 20px;
+    }
+
+    .hikes-box-icon {
+        display: flex;
+        justify-content: flex-end;
+        gap: 15px;
+    }
+
+    .hikes-box-icon img {
+        width: 20px;
+        height: 20px;
+        >>>>>>>963c9ef1b33c08fbf7fc662917dc664785a49dbe
+    }
