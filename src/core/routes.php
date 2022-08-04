@@ -24,6 +24,7 @@ $routes = [
     // Routes de la méthode POST
     'POST' => [
         '/register' => 'view/user/register.php',
+        '/contact' => 'view/contact.php',
         '/profile' => 'view/user/profile.php',
         '/update-hike' => 'view/user/update.php',
         '/login' => 'view/user/login.php',
