@@ -65,6 +65,7 @@ $allHikes = $connect->prepare('SELECT * FROM hikes WHERE userID='.$_SESSION['id'
 $allHikes->execute();
 $hikes = $allHikes->fetchAll();
 
+
 ?>
 
         <form action="" method="POST" class="main-form">
@@ -158,8 +159,8 @@ $hikes = $allHikes->fetchAll();
 <<<<<<< HEAD
 =======
             <div class="hikes-box-icon">
-            <a href="http://localhost:3000/update-hike?user=<?php echo $_SESSION['username'] ?>"><img src="../IMG/editer.png" alt="edit"></a>
-              <img src="../IMG/supprimer.png" alt="delete">
+              <a href="http://localhost:3000/update-hike?user=<?php echo $_SESSION['username'] ?>&id=<?php echo $hike['hikeID'] ?>"><img src="../IMG/editer.png" alt="edit"></a>
+              <a href="http://localhost:3000/delete?id=<?php echo $hike['hikeID'] ?>" onclick="javascript: return confirm('Are you SURE you want to DELETE this Hike ?');"><img src="../IMG/supprimer.png" alt="delete"></a>
             </div>
 >>>>>>> 963c9ef1b33c08fbf7fc662917dc664785a49dbe
             <h3 class="hikes-box-h3"><?php echo $hike['name'];?></h3>
