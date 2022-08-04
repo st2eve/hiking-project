@@ -33,7 +33,7 @@ require_once('core/dbconnexion.php');
         </div>
 
         <div class="logo">
-            <a href="http://localhost:3000/home"><img src="IMG/Logo.png" alt="Logo" height="300px"></a>
+            <a href="http://localhost:3000/home"><img src="public/IMG/Logo.png" alt="Logo" height="300px"></a>
         </div>
 
         <div class="head-right">
@@ -48,7 +48,7 @@ require_once('core/dbconnexion.php');
             <button name="contact" class="header-btn" type="button"><a href="contact">Contact</a></button>
         </div>
         <div class="logo">
-                <a href="http://localhost:3000/home"><img src="IMG/Logo.png" alt="Logo" height="300px"></a>
+                <a href="http://localhost:3000/home"><img src="public/IMG/Logo.png" alt="Logo" height="300px"></a>
         </div>
         <div class="head-right">
             <button name="login" class="header-btn" type="button"><a href="http://localhost:3000/login">Login</a></button>
