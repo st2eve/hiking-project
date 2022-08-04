@@ -38,12 +38,14 @@ require_once('../core/dbconnexion.php');
 
         <div class="head-right">
             <button name="logout" class="header-btn" type="button"><a href="logout">Logout</a></button>
+            <button name="contact" class="header-btn" type="button"><a href="contact">Contact</a></button>
         </div>
         <?php
             } else {
         ?>
         <div class="head-left" >
             <button name="home" class="header-btn" type="button"><a href="http://localhost:3000/home">Home</a></button> 
+            <button name="contact" class="header-btn" type="button"><a href="contact">Contact</a></button>
         </div>
         <div class="logo">
                 <a href="http://localhost:3000/home"><img src="IMG/Logo.png" alt="Logo" height="300px"></a>
