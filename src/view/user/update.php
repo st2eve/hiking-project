@@ -22,7 +22,7 @@ if (isset($_SESSION['id'])){
     $allTags->execute();
     $tags = $allTags->fetchAll();
 
-    $sql = "SELECT * FROM hikes WHERE userID=".$_SESSION['id'];
+    $sql = "SELECT * FROM hikes WHERE userID=".$_SESSION['id']." AND hikeID=".$results['id'];
 
     $result = $connect->query($sql);
     $row = $result->fetch();
@@ -34,11 +34,42 @@ if (isset($_SESSION['id'])){
         $duration = $row['duration'];
         $elevation_gain = $row['elevation_gain'];
         $description = $row['description'];
-        $tags = $row['tags'];
+        $tagsCheck = $row['tags'];
 
     } else {
         echo "Not Found";
     }
+        
+    $sqlTags = "SELECT tags FROM hikes WHERE userID=".$_SESSION['id']." AND hikeID=".$results['id'];
+    $resultTags = $connect->query($sqlTags);
+    $rowTags = $resultTags->fetch();
+    $singleTags = explode(",", $rowTags['tags']);
+
+    if(!empty($_POST)){
+  
+        $hikename=$_POST['hikename'];
+        $hikedistance=$_POST['hikedistance'];
+        $hikeduration=$_POST['hikeduration'];
+        $hikeelevation=$_POST['hikeelevation'];
+        $hikedesc=$_POST['hikedesc'];
+        $tagsCheckbox = implode(',', $_POST['tagsCheckbox']);
+      
+        $hikesql = "UPDATE hikes SET name='$hikename', distance='$hikedistance', duration='$hikeduration', elevation_gain='$hikeelevation', description='$hikedesc', tags='$tagsCheckbox' WHERE userID=".$_SESSION['id']." AND hikeID=".$results['id'];
+      
+        $stmt = $connect->prepare($hikesql);
+
+        $stmt->execute();
+
+        header("Location: http://localhost:3000/profile?user=".$_SESSION['username']);
+      
+      }else{
+      ?>
+      
+      <body>
+        <div class="main-block">
+      <?php
+        echo '<p class="main-empty">No empty field authorized</p>';
+      }
 
 ?>
 <body>
@@ -71,7 +102,15 @@ if (isset($_SESSION['id'])){
                     foreach ($tags as $tag) {
                 ?>
                 <label class="label-tags" for="checkbox"><b><?php echo $tag['name'];?></b></label>
-                <input type="checkbox" name="tagsCheckbox[]" value="<?php echo $tag['name'];?>">
+                <input type="checkbox" name="tagsCheckbox[]" value="<?php echo $tag['name'];?>" <?php 
+                                                                                                    foreach($singleTags as $singleTag){
+                                                                                                        if ($tag['name'] == $singleTag){
+                                                                                                            echo "checked";
+                                                                                                        } else {
+                                                                                                            echo "";
+                                                                                                        }
+                                                                                                    }        
+                                                                                                ?>>
                 <?php
                 }
                 ?>
