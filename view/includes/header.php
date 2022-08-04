@@ -28,12 +28,12 @@ require_once('core/dbconnexion.php');
             if (isset($_SESSION['username'])){
         ?>
         <div class="head-left" >
-            <button name="home" class="header-btn" type="button"><a href="https://one-more-hike.herokuapp.com/home">Home</a></button> 
-            <button name="profile" class="header-btn" type="button"><a href="https://one-more-hike.herokuapp.com/profile?user=<?php echo $_SESSION['username'] ?>">Profile</a></button>
+            <button name="home" class="header-btn" type="button"><a href="home">Home</a></button> 
+            <button name="profile" class="header-btn" type="button"><a href="profile?user=<?php echo $_SESSION['username'] ?>">Profile</a></button>
         </div>
 
         <div class="logo">
-            <a href="https://one-more-hike.herokuapp.com/home"><img src="public/IMG/Logo.png" alt="Logo" height="300px"></a>
+            <a href="home"><img src="public/IMG/Logo.png" alt="Logo" height="300px"></a>
         </div>
 
         <div class="head-right">
@@ -44,15 +44,15 @@ require_once('core/dbconnexion.php');
             } else {
         ?>
         <div class="head-left" >
-            <button name="home" class="header-btn" type="button"><a href="https:/one-more-hike.herokuapp.com//home">Home</a></button> 
+            <button name="home" class="header-btn" type="button"><a href="home">Home</a></button> 
             <button name="contact" class="header-btn" type="button"><a href="contact">Contact</a></button>
         </div>
         <div class="logo">
-                <a href="https://one-more-hike.herokuapp.com/home"><img src="public/IMG/Logo.png" alt="Logo" height="300px"></a>
+                <a href="home"><img src="public/IMG/Logo.png" alt="Logo" height="300px"></a>
         </div>
         <div class="head-right">
-            <button name="login" class="header-btn" type="button"><a href="https://one-more-hike.herokuapp.com/login">Login</a></button>
-            <button name="register" class="header-btn" type="button"><a href="https://one-more-hike.herokuapp.com/register">Register</a></button>
+            <button name="login" class="header-btn" type="button"><a href="login">Login</a></button>
+            <button name="register" class="header-btn" type="button"><a href="register">Register</a></button>
         </div>
         <?php
             }
