@@ -2,7 +2,6 @@
     declare(strict_types=1);
     error_reporting(-1);
     ini_set('display_errors', 'On');
-    set_error_handler("var_dump");
 
     require 'includes/header.php';
 
@@ -21,6 +20,7 @@
         if(mail($mailAdmin, $sujet, $message)){
             
                 echo "Message accepted";
+                header('location: http://localhost:3000/home');
             }
             else
             {
@@ -28,7 +28,7 @@
             }
         
 
-        //header('location: http://localhost:3000/home');
+        
 
     }
     
@@ -48,7 +48,7 @@
                 <input type="text" placeholder="Enter LastName" name="lastname" class="form-email" required>
 
                 <label for="email"><b>Email</b></label>
-                <input type="text" placeholder="Enter Email" name="email" class="form-email" required>
+                <input type="email" placeholder="Enter Email" name="email" class="form-email" required>
 
                 <label for="sujet"><b>Sujet</b></label>
                 <input type="text" placeholder="Enter your sujet" name="sujet" class="form-sujet" required>

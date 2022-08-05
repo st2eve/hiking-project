@@ -42,7 +42,7 @@ if(!empty($_POST)){
                 <hr>
 
                 <label for="email"><b>Email</b></label>
-                <input type="text" placeholder="Enter Email" name="email" class="form-email" required>
+                <input type="email" placeholder="Enter Email" name="email" class="form-email" required>
 
                 <label for="firstname"><b>Firstname</b></label>
                 <input type="text" placeholder="Enter Firstname" name="firstname" class="form-email" required>
