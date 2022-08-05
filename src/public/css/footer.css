@@ -13,9 +13,6 @@ footer {
 .signature {
   background-position: center;
 }
-
-.copyright {
-}
 .medias {
   background-color: darkgreen;
   border-radius: 25px;
@@ -25,9 +22,6 @@ footer {
   flex-direction: row;
   align-items: center;
 }
-a {
-}
-
 i {
   padding: 0 20px;
 }

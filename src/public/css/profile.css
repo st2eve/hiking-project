@@ -3,7 +3,7 @@
 }
 
 .main-empty {
-    >>>>>>>963c9ef1b33c08fbf7fc662917dc664785a49dbe font-size: 15px;
+    font-size: 15px;
     color: red;
     font-weight: bold;
     margin: 15px;
@@ -43,7 +43,7 @@
     justify-content: center;
     align-items: baseline;
     align-items: center;
-
+}
     .container-tags {
         height: 30px;
         display: flex;
@@ -71,5 +71,4 @@
     .hikes-box-icon img {
         width: 20px;
         height: 20px;
-        >>>>>>>963c9ef1b33c08fbf7fc662917dc664785a49dbe
     }

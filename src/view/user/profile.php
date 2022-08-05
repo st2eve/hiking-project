@@ -24,14 +24,13 @@ $tags = $allTags->fetchAll();
 
 if(!empty($_POST)){
   
-  $hikename=$_POST['hikename'];
+  $hikename=htmlspecialchars($_POST['hikename'], ENT_QUOTES);
   $hikedate=$_POST['hikeDate'];
   $hikedistance=$_POST['hikedistance'];
   $hikeduration=$_POST['hikeduration'];
   $hikeelevation=$_POST['hikeelevation'];
-  $hikedesc=$_POST['hikedesc'];
+  $hikedesc=htmlspecialchars($_POST['hikedesc'], ENT_QUOTES);
   $tagsCheckbox = implode(',', $_POST['tagsCheckbox']);
-  $userID = $_POST[$_SESSION['id']];
 
   $hikesql = "INSERT INTO hikes (name, date, distance, duration, elevation_gain, description, tags, userID)
   VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -88,7 +87,7 @@ $hikes = $allHikes->fetchAll();
                 <input type="number" placeholder="Enter an Elevation (m)" name="hikeelevation" class="form-hikeelevation" required>
 
                 <label for="hikedesc"><b>Description</b></label>
-                <input type="text" placeholder="Enter a Description" name="hikedesc" class="form-hikedesc" required>
+                <textarea type="text" placeholder="Enter a Description" name="hikedesc" class="form-hikedesc" required></textarea>
 
                 <div class="container-tags"> 
                   <?php 

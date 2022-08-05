@@ -3,28 +3,21 @@
 
     require 'includes/header.php';
     require_once('../core/dbconnexion.php');
-?>
 
-
-<?php
     // On récupère tout le contenu de la table Tags
     $allTags = $connect->prepare('SELECT * FROM Tags');
     $allTags->execute();
     $tags = $allTags->fetchAll();
 
-     // On récupère tout le contenu de la table Hikes
+    // On récupère tout le contenu de la table Hikes
     $allHikes = $connect->prepare('SELECT * FROM hikes');
     $allHikes->execute();
     $hikes = $allHikes->fetchAll();
 
-    // On verifie si il y a une session si pas dessesion on affiche "Login" "register", si session on affiche le username
-    /*if (!isset($_SESSION['id'])){
-        echo '<a href="login">Login</a>';
-        echo '<a href="register">Register</a>';
-    } else {
-        echo '<p>Oh hi <a href="profile">'.$_SESSION['username'].'</a>!</p>';
-        echo '<a href="logout">Logout</a>';
-    }*/
+    if(isset($_SESSION['id'])){
+        $getTags = $_GET['value-tags'];
+        echo $getTags;
+    }
 ?>
 <body>
   <div class="main-block">
@@ -33,7 +26,7 @@
                 // On affiche chaque tags un à un
                 foreach ($tags as $tag) {
             ?>
-            <a href='#'><?php echo $tag['name']; }?></a>
+            <a href='home?tag=<?php echo $tag['name']; ?>'><?php echo $tag['name']; }?></a>
         </div>
         <div class="big-flex">
 
@@ -44,11 +37,11 @@
             <div class="hikes-box">
                 <h3 class="hikes-box-h3"><?php echo $hike['name'];?></h3>
                 <h5 class="hikes-box-h5"><?php echo $hike['date'];?></h5>
-                <p class="hikes-box-p">Distance : <?php echo $hike['distance'];?>Km</p>
-                <p class="hikes-box-p">Duraction : <?php echo $hike['duration'];?>Minutes</p>
-                <p class="hikes-box-p">Elevation gain : <?php echo $hike['elevation_gain'];?>%</p>
-                <p class="hikes-box-p">Decription : <?php echo $hike['description'];?></p>
-                <p class="hikes-box-p">Tag : <a href ='#'><?php echo $hike['tags'];?></a></p>
+                <p class="hikes-box-p"><u>Distance :</u> <?php echo $hike['distance'];?> Km</p>
+                <p class="hikes-box-p"><u>Duration :</u> <?php echo $hike['duration'];?> minutes</p>
+                <p class="hikes-box-p"><u>Elevation gain :</u> <?php echo $hike['elevation_gain'];?> m</p>
+                <p class="hikes-box-p"><u>Decription :</u> <?php echo $hike['description'];?></p>
+                <p class="hikes-box-p"><u>Tag(s) :</u> <a name="value-tags" href ='#'><?php echo $hike['tags']; ?></a></p>
             </div>
         <?php
         }

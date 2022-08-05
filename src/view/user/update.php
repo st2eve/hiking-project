@@ -47,11 +47,11 @@ if (isset($_SESSION['id'])){
 
     if(!empty($_POST)){
   
-        $hikename=$_POST['hikename'];
+        $hikename=htmlspecialchars($_POST['hikename'], ENT_QUOTES);
         $hikedistance=$_POST['hikedistance'];
         $hikeduration=$_POST['hikeduration'];
         $hikeelevation=$_POST['hikeelevation'];
-        $hikedesc=$_POST['hikedesc'];
+        $hikedesc=htmlspecialchars($_POST['hikedesc'], ENT_QUOTES);
         $tagsCheckbox = implode(',', $_POST['tagsCheckbox']);
       
         $hikesql = "UPDATE hikes SET name='$hikename', distance='$hikedistance', duration='$hikeduration', elevation_gain='$hikeelevation', description='$hikedesc', tags='$tagsCheckbox' WHERE userID=".$_SESSION['id']." AND hikeID=".$results['id'];
@@ -94,7 +94,7 @@ if (isset($_SESSION['id'])){
             <input type="number" placeholder="Enter an Elevation (m)" name="hikeelevation" value="<?php echo $elevation_gain ?>" class="form-hikeelevation" required>
 
             <label for="hikedesc"><b>Description</b></label>
-            <input type="text" placeholder="Enter a Description" name="hikedesc" value="<?php echo $description ?>" class="form-hikedesc" required>
+            <textarea type="text" name="hikedesc" class="form-hikedesc" required><?php echo $description ?></textarea>
 
             <div class="container-tags"> 
                 <?php 

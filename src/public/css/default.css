@@ -8,3 +8,30 @@ button{
     height: 50px;
     min-width: 100px;
 }
+.hikes-box {
+    width: 90vw;
+    margin: 25px;
+    background-color: darkgreen;
+    border-radius: 15px;
+    padding: 10Px;
+    color: whitesmoke;
+}
+
+.hikes-box-h3 {
+    margin-bottom: 10px;
+    font-size: x-large;
+}
+
+.hikes-box-h5 {
+    margin-bottom: 10px;
+    font-size: large;
+}
+.hikes-box-p{
+    white-space: pre-line;
+    margin-bottom: 10px;
+    font-size: medium;
+}
+.hikes-box-p a{
+    text-decoration: none;
+    color: whitesmoke;
+}
