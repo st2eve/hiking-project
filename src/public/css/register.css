@@ -11,11 +11,6 @@
     align-items: center;
     gap: 20px;
 }
-.form-container{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
 .form-container h1{
     font-size: 30px;
     font-weight: bold;
@@ -29,7 +24,11 @@
     margin-bottom: 15px;
 }
 .signin{
+    color: whitesmoke;
     text-align: center;
+    background-color: rgb(0, 100, 0, 0.7);
+    border-radius: 15px;
+    padding: 20px;
 }
 .registerbtn{
     align-self: center;

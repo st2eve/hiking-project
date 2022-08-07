@@ -19,6 +19,7 @@ $routes = [
         '/sessiontest' => 'view/user/sessiontest.php',
         '/logout' => 'view/user/logout.php',
         '/delete' => 'view/user/delete.php',
+        '/hike'=> 'view/singlehike.php',
 
     ],
     // Routes de la méthode POST

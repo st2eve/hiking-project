@@ -48,8 +48,9 @@
                 <p class="hikes-box-p"><u>Distance :</u> <?php echo $hike['distance'];?> Km</p>
                 <p class="hikes-box-p"><u>Duration :</u> <?php echo $hike['duration'];?> minutes</p>
                 <p class="hikes-box-p"><u>Elevation gain :</u> <?php echo $hike['elevation_gain'];?> m</p>
-                <p class="hikes-box-p"><u>Decription :</u> <?php echo $hike['description'];?></p>
+                <!-- <p class="hikes-box-p"><u>Decription :</u><?php echo $hike['description'];?></p> -->
                 <p class="hikes-box-p"><u>Tag(s) :</u> <a name="value-tags" href ='#'><?php echo $hike['tags']; ?></a></p>
+                <a class="home-singlehike" href="hike?id=<?php echo $hike['hikeID'];?>">Show this hike, please !</a>
             </div>
         <?php
         }

@@ -43,23 +43,22 @@ ini_set("display_errors", 1);
     }
 ?>
 <body>
-   <main>
-         <div class="main-block">
+   <div class="main-block">
+      <form class="main-form" method="post" action="">
+         <div class="form-container">
             <h1>Login</h1>
-               <form class="main-form" method="post" action="">
-                  <div class="form-username">
-                     <label>Username</label>
-                     <input type="text" name="username" required="required"/>
-                  </div>
-                  <div class="form-password">
-                     <label>Password</label>
-                     <input type="password" name="password" required="required"/>
-                  </div>
-                  <button class="loginbtn" name="login">Login</button>
-               </form>
-               <a href="home">Home</a>
+            <div class="form-username">
+               <label>Username</label>
+               <input type="text" name="username" required="required"/>
+            </div>
+            <div class="form-password">
+               <label>Password</label>
+               <input type="password" name="password" required="required"/>
+            </div>
+            <button class="loginbtn" name="login">Login</button>
          </div>
-   </main>
+      </form>
+   </div>
 </body>
 <?php
     require '../view/includes/footer.php';

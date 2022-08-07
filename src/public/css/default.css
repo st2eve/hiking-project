@@ -9,11 +9,11 @@ button{
     min-width: 100px;
 }
 .hikes-box {
-    width: 90vw;
+    width: 40vw;
     margin: 25px;
     background-color: rgb(0, 100, 0, 0.7);
     border-radius: 15px;
-    padding: 10Px;
+    padding: 20Px;
     color: whitesmoke;
 }
 
@@ -42,4 +42,13 @@ button{
     background-repeat: no-repeat;
     background-color: rgb(245, 245, 245, 0.5);
     padding: 15px;
+}
+.form-container{
+    color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: rgb(0, 100, 0, 0.7);
+    border-radius: 15px;
+    padding: 20px;
 }

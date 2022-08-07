@@ -37,3 +37,15 @@
 .a-home:visited {
     text-decoration: none;
 }
+.home-singlehike {
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    font-family: 'Roboto Mono', monospace;
+    color: whitesmoke;
+    border: 1px solid rgb(25, 25, 25);
+    padding: 5px;
+    border-radius: 50px;
+    margin-top: 20px;
+    background-color: darkgreen;
+}
