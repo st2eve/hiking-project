@@ -4,29 +4,27 @@
     require 'includes/header.php';
     require_once('../core/dbconnexion.php');
 
-    // On récupère tout le contenu de la table Tags
-    $allTags = $connect->prepare('SELECT * FROM Tags');
-    $allTags->execute();
-    $tags = $allTags->fetchAll();
-
-    // On récupère tout le contenu de la table Hikes
-    $allHikes = $connect->prepare('SELECT * FROM hikes');
-    $allHikes->execute();
-    $hikes = $allHikes->fetchAll();
-
     $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
     $components = parse_url($url);
     parse_str($components['query'], $results);
 
-    $sqlTags = "SELECT tags FROM hikes";
-    $resultTags = $connect->query($sqlTags);
-    $rowTags = $resultTags->fetch(PDO::FETCH_ASSOC);
-    $singleTags = explode(",", $rowTags['tags']);
+    // On récupère tout le contenu de la table Tags
+    $allTags = $connect->prepare('SELECT * FROM Tags');
+    $allTags->execute();
+    $tags = $allTags->fetchAll();
+    
+    // On récupère tout le contenu de la table Hikes
+    $allHikes = $connect->prepare("SELECT * FROM hikes WHERE tags LIKE '%".$results['tag']."%'");
+    $allHikes->execute();
+    $hikes = $allHikes->fetchAll();
 
-    foreach($singleTags as $singleTag){
-        if($singleTag == $results['tag'])
-        echo 'this is the '.$singleTag.' tag';
+    if(!$results['tag']){
+        // On récupère tout le contenu de la table Hikes
+        $allHikes = $connect->prepare("SELECT * FROM hikes");
+        $allHikes->execute();
+        $hikes = $allHikes->fetchAll();
     }
+
 ?>
 <body>
   <div class="main-block">
@@ -43,18 +41,7 @@
             // On affiche chaque hikes un à un
                 foreach ($hikes as $hike) {
             ?>
-            <div class="hikes-box" style="">
-                                <?php 
-
-                    foreach($singleTags as $singleTag){
-                        if($singleTag == $results['tag']){
-                        echo 'this one is display';
-                        } else {
-                            echo 'this one is not display';
-                        }
-                    }
-
-                    ?>
+            <div class="hikes-box">
                 <h3 class="hikes-box-h3"><?php echo $hike['name'];?></h3>
                 <h5 class="hikes-box-h5"><?php echo $hike['date'];?></h5>
                 <p class="hikes-box-p"><u>Distance :</u> <?php echo $hike['distance'];?> Km</p>
