@@ -14,9 +14,18 @@
     $allHikes->execute();
     $hikes = $allHikes->fetchAll();
 
-    if(isset($_SESSION['id'])){
-        $getTags = $_GET['value-tags'];
-        echo $getTags;
+    $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+    $components = parse_url($url);
+    parse_str($components['query'], $results);
+
+    $sqlTags = "SELECT tags FROM hikes";
+    $resultTags = $connect->query($sqlTags);
+    $rowTags = $resultTags->fetch(PDO::FETCH_ASSOC);
+    $singleTags = explode(",", $rowTags['tags']);
+
+    foreach($singleTags as $singleTag){
+        if($singleTag == $results['tag'])
+        echo 'this is the '.$singleTag.' tag';
     }
 ?>
 <body>
@@ -34,7 +43,18 @@
             // On affiche chaque hikes un à un
                 foreach ($hikes as $hike) {
             ?>
-            <div class="hikes-box">
+            <div class="hikes-box" style="">
+                                <?php 
+
+                    foreach($singleTags as $singleTag){
+                        if($singleTag == $results['tag']){
+                        echo 'this one is display';
+                        } else {
+                            echo 'this one is not display';
+                        }
+                    }
+
+                    ?>
                 <h3 class="hikes-box-h3"><?php echo $hike['name'];?></h3>
                 <h5 class="hikes-box-h5"><?php echo $hike['date'];?></h5>
                 <p class="hikes-box-p"><u>Distance :</u> <?php echo $hike['distance'];?> Km</p>
