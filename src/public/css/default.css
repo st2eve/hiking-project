@@ -8,6 +8,11 @@ button{
     height: 50px;
     min-width: 100px;
 }
+button:hover {
+    background-color: whitesmoke;
+    box-shadow: 2px 2px rgb(25, 25, 25);
+    cursor: pointer;
+}
 .hikes-box {
     width: 40vw;
     margin: 25px;
