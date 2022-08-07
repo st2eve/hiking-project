@@ -11,7 +11,7 @@ button{
 .hikes-box {
     width: 90vw;
     margin: 25px;
-    background-color: darkgreen;
+    background-color: rgb(0, 100, 0, 0.7);
     border-radius: 15px;
     padding: 10Px;
     color: whitesmoke;
@@ -34,4 +34,12 @@ button{
 .hikes-box-p a{
     text-decoration: none;
     color: whitesmoke;
+}
+.main-block {
+    background-image: url(../IMG/Home.png);
+    background-attachment: fixed;
+    background-position: initial;
+    background-repeat: no-repeat;
+    background-color: rgb(245, 245, 245, 0.5);
+    padding: 15px;
 }

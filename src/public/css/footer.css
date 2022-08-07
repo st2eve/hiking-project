@@ -1,6 +1,7 @@
 footer {
   background-image: url("../IMG/footer.png");
   background-size: cover;
+  border: 3px solid rgb(0, 100, 0);
 }
 .down {
   padding-top: 60px;

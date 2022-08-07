@@ -4,14 +4,6 @@
     font-weight: bold;
     margin: 15px;
 }
-.main-block{
-    background-image: url('../IMG/Home.png');
-    background-attachment: fixed;
-    background-position: initial;
-    background-repeat: no-repeat;
-    background-color: whitesmoke;
-    padding: 15px;
-}
 
 .main-form{
     display: flex;

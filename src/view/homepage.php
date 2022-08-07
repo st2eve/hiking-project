@@ -1,24 +1,30 @@
 <?php
     declare(strict_types=1);
+    error_reporting(E_ALL);
+    ini_set("display_errors", 1);
 
     require 'includes/header.php';
     require_once('../core/dbconnexion.php');
 
-    $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-    $components = parse_url($url);
-    parse_str($components['query'], $results);
+
+    
 
     // On récupère tout le contenu de la table Tags
     $allTags = $connect->prepare('SELECT * FROM Tags');
     $allTags->execute();
     $tags = $allTags->fetchAll();
     
-    // On récupère tout le contenu de la table Hikes
-    $allHikes = $connect->prepare("SELECT * FROM hikes WHERE tags LIKE '%".$results['tag']."%'");
-    $allHikes->execute();
-    $hikes = $allHikes->fetchAll();
+    if(!isset($results)){
 
-    if(!$results['tag']){
+        $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+        $components = parse_url($url);
+        parse_str($components['query'], $results);
+
+        // On récupère tout le contenu de la table Hikes
+        $allHikes = $connect->prepare("SELECT * FROM hikes WHERE tags LIKE '%".$results['tag']."%'");
+        $allHikes->execute();
+        $hikes = $allHikes->fetchAll();
+    }else{
         // On récupère tout le contenu de la table Hikes
         $allHikes = $connect->prepare("SELECT * FROM hikes");
         $allHikes->execute();
