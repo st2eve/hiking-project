@@ -6,31 +6,26 @@
     require 'includes/header.php';
     require_once('../core/dbconnexion.php');
 
-
-    
-
     // On récupère tout le contenu de la table Tags
     $allTags = $connect->prepare('SELECT * FROM Tags');
     $allTags->execute();
     $tags = $allTags->fetchAll();
-    
-    if(!isset($results)){
 
-        $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-        $components = parse_url($url);
-        parse_str($components['query'], $results);
+    $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+    $components = parse_url($url);
+    parse_str($components['query'], $results);
 
-        // On récupère tout le contenu de la table Hikes
-        $allHikes = $connect->prepare("SELECT * FROM hikes WHERE tags LIKE '%".$results['tag']."%'");
-        $allHikes->execute();
-        $hikes = $allHikes->fetchAll();
-    }else{
+    if($results['tag'] == 'all'){
         // On récupère tout le contenu de la table Hikes
         $allHikes = $connect->prepare("SELECT * FROM hikes");
         $allHikes->execute();
         $hikes = $allHikes->fetchAll();
+    }else{
+        // On récupère le contenu de la table Hikes où les tags contiennent le tag en url
+        $allHikes = $connect->prepare("SELECT * FROM hikes WHERE tags LIKE '%".$results['tag']."%'");
+        $allHikes->execute();
+        $hikes = $allHikes->fetchAll();
     }
-
 ?>
 <body>
   <div class="main-block">

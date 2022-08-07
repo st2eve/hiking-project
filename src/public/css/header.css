@@ -4,11 +4,9 @@ header {
   background-position: center center;
   padding-top: 50px;
   padding-bottom: 150px;
-
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
   border: 3px solid rgb(0, 100, 0);
 }
 

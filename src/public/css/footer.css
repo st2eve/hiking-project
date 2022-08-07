@@ -9,13 +9,18 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: rgb(0, 100, 0, 0.2);
+  gap: 25px;
 }
-
+.copyright{
+  font-weight: 500;
+  color: whitesmoke;
+}
 .signature {
   background-position: center;
+
 }
 .medias {
-  background-color: darkgreen;
   border-radius: 25px;
 }
 .icons {
@@ -25,4 +30,5 @@ footer {
 }
 i {
   padding: 0 20px;
+  color: whitesmoke;
 }
