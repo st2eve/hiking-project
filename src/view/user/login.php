@@ -32,7 +32,7 @@ ini_set("display_errors", 1);
                      $_SESSION['email'] = $fetch['email'];
                      $_SESSION['password'] = $fetch['password'];
                      
-                     header('location: home');
+                     header('location: http://localhost:3000/home?tag=all');
                   } else {
                      echo"<center><h5 class='text-danger'>Password or username is not correct</h5></center>";
                   }

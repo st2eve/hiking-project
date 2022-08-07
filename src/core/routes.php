@@ -8,7 +8,7 @@ session_start();
 $routes = [
     // Routes de la méthode GET (typiquement afficher une page)
     'GET' => [
-        '/' => 'view/homepage.php',
+        '/' => 'core/home.php',
         '/home' => 'view/homepage.php',
         '/contact' => 'view/contact.php',
         '/404' => 'view/404.php',
