@@ -35,6 +35,7 @@ if (isset($_SESSION['id'])){
         $elevation_gain = $row['elevation_gain'];
         $description = $row['description'];
         $tagsCheck = $row['tags'];
+        $img = $row['url_img'];
 
     } else {
         echo "Not Found";
@@ -53,8 +54,9 @@ if (isset($_SESSION['id'])){
         $hikeelevation=$_POST['hikeelevation'];
         $hikedesc=htmlspecialchars($_POST['hikedesc'], ENT_QUOTES);
         $tagsCheckbox = implode(',', $_POST['tagsCheckbox']);
+        $hikeimg=htmlspecialchars($_POST['hikeImg'], ENT_QUOTES);
       
-        $hikesql = "UPDATE hikes SET name='$hikename', distance='$hikedistance', duration='$hikeduration', elevation_gain='$hikeelevation', description='$hikedesc', tags='$tagsCheckbox' WHERE userID=".$_SESSION['id']." AND hikeID=".$results['id'];
+        $hikesql = "UPDATE hikes SET name='$hikename', distance='$hikedistance', duration='$hikeduration', elevation_gain='$hikeelevation', description='$hikedesc', tags='$tagsCheckbox', url_img='$hikeimg' WHERE userID=".$_SESSION['id']." AND hikeID=".$results['id'];
       
         $stmt = $connect->prepare($hikesql);
 
@@ -115,6 +117,9 @@ if (isset($_SESSION['id'])){
                 }
                 ?>
             </div>
+
+            <label for="hikeImg"><b>URL of your image</b></label>
+            <input type="text" name="hikeImg" placeholder="Enter Image URL" class="form-hikeimg" required>
 
             <button name="submit" type="submit" class="addhikebtn">Update your Hike</button>
                     

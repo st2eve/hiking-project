@@ -31,11 +31,12 @@ if(!empty($_POST)){
   $hikeelevation=$_POST['hikeelevation'];
   $hikedesc=htmlspecialchars($_POST['hikedesc'], ENT_QUOTES);
   $tagsCheckbox = implode(',', $_POST['tagsCheckbox']);
+  $hikeimg=htmlspecialchars($_POST['hikeImg'], ENT_QUOTES);
 
-  $hikesql = "INSERT INTO hikes (name, date, distance, duration, elevation_gain, description, tags, userID)
-  VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+  $hikesql = "INSERT INTO hikes (name, date, distance, duration, elevation_gain, description, tags, userID, url_img)
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-  $hikevalues = array($_POST['hikename'], $_POST['hikeDate'], $_POST['hikedistance'], $_POST['hikeduration'], $_POST['hikeelevation'], $_POST['hikedesc'], implode(',', $_POST['tagsCheckbox']), $_SESSION['id']);
+  $hikevalues = array($_POST['hikename'], $_POST['hikeDate'], $_POST['hikedistance'], $_POST['hikeduration'], $_POST['hikeelevation'], $_POST['hikedesc'], implode(',', $_POST['tagsCheckbox']), $_SESSION['id'], $hikeimg);
 
   $hikestatement = $connect->prepare($hikesql);
 
@@ -43,7 +44,6 @@ if(!empty($_POST)){
 
   $hikeiD = $connect->prepare('SELECT LAST_INSERT_ID() FROM `hikes`');
   $hikeiD->execute();
-
 
   header("Location: http://localhost:3000/profile?user=".$_SESSION['username']);
 
@@ -60,14 +60,12 @@ if(!empty($_POST)){
 $allHikes = $connect->prepare('SELECT * FROM hikes WHERE userID='.$_SESSION['id']);
 $allHikes->execute();
 $hikes = $allHikes->fetchAll();
-
-
 ?>
 
         <form action="" method="POST" class="main-form">
             <div class="form-container">
                 <p class="form-session">Oh hi <a href="profile"><?php echo $_SESSION['username'] ?></a>!</p>
-                <h1>Add Hike</h1>
+                <h1>Add a Hike</h1>
                 <p>Please fill in this form to create a Hike.</p>
                 <hr>
 
@@ -101,12 +99,14 @@ $hikes = $allHikes->fetchAll();
                   ?>
                 </div>
 
+                <label for="hikeImg"><b>URL of your image</b></label>
+                <input type="text" name="hikeImg" placeholder="Enter Image URL" class="form-hikeimg" required>
+
                 <button name="submit" type="submit" class="addhikebtn">Add a Hike</button>
                 
             </div>
         </form>
-    </div>
-    <div class="hikes-profile">
+        <div class="big-flex">
         <?php
         // On affiche chaque hikes un à un
             foreach ($hikes as $hike) {
@@ -115,6 +115,9 @@ $hikes = $allHikes->fetchAll();
             <div class="hikes-box-icon">
               <a href="http://localhost:3000/update-hike?user=<?php echo $_SESSION['username'] ?>&id=<?php echo $hike['hikeID'] ?>"><img src="../IMG/editer.png" alt="edit"></a>
               <a href="http://localhost:3000/delete?id=<?php echo $hike['hikeID'] ?>" onclick="javascript: return confirm('Are you SURE you want to DELETE this Hike ?');"><img src="../IMG/supprimer.png" alt="delete"></a>
+            </div>
+            <div class="hikes-box-img">
+              <img src="<?php echo $hike['url_img'];?>" alt="image of <?php echo $hike['name'];?>">
             </div>
             <h3 class="hikes-box-h3"><?php echo $hike['name'];?></h3>
             <h5 class="hikes-box-h5"><?php echo $hike['date'];?></h5>
@@ -127,6 +130,7 @@ $hikes = $allHikes->fetchAll();
     <?php
     }
     ?>
+    </div>
     </div>
   </body>
   <?php

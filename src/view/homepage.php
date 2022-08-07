@@ -43,6 +43,9 @@
                 foreach ($hikes as $hike) {
             ?>
             <div class="hikes-box">
+                <div class="hikes-box-img">
+                <img src="<?php echo $hike['url_img'];?>" alt="image of <?php echo $hike['name'];?>">
+                </div>
                 <h3 class="hikes-box-h3"><?php echo $hike['name'];?></h3>
                 <h5 class="hikes-box-h5"><?php echo $hike['date'];?></h5>
                 <p class="hikes-box-p"><u>Distance :</u> <?php echo $hike['distance'];?> Km</p>

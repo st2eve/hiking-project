@@ -57,3 +57,14 @@ button:hover {
     border-radius: 15px;
     padding: 20px;
 }
+.hikes-box-img {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.hikes-box-img img{
+    margin: 10px 0;
+    width: 70%;
+    height: 25vw;
+    border-radius: 10px;
+}
