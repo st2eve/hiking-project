@@ -3,7 +3,7 @@
     error_reporting(E_ALL);
     ini_set("display_errors", 1);
 
-    require 'includes/header.php';
+    require 'view/includes/header.php';
     require_once('core/dbconnexion.php');
 
     // On récupère tout le contenu de la table Tags
@@ -63,5 +63,5 @@
     </div>
 </body>
 <?php
-    require 'includes/footer.php';
+    require 'view/includes/footer.php';
 ?>
