@@ -2,7 +2,7 @@
 <footer>
     <section class="down">
         <div class="signature">
-        <img src="IMG/signatures.png" alt="signature" height="75px">
+        <img src="public/IMG/signatures.png" alt="signature" height="75px">
         </div>
 <div class="copyright">
 &copy; One more Hike: BeCode <?php echo date('Y')?>
