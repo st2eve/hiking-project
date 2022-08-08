@@ -21,7 +21,7 @@ declare(strict_types=1);
     </main>
     <footer>
         <nav class="nav-404">
-            <a class="a-404" href="http://localhost:3000/home?tag=all">page accueille</a>
+            <a class="a-404" href="https://one-more-hike.herokuapp.com/home?tag=all">page accueille</a>
         </nav>
     </footer>
 </body>

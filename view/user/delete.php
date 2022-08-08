@@ -12,6 +12,6 @@ parse_str($components['query'], $results);
 $delete = $connect->prepare('DELETE FROM hikes WHERE hikeID='.$results['id']);
 $delete->execute();
 
-header("Location: http://localhost:3000/profile?user=".$_SESSION['username']);
+header("Location: https://one-more-hike.herokuapp.com/profile?user=".$_SESSION['username']);
 
 ?>

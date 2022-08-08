@@ -3,8 +3,8 @@ declare(strict_types=1);
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
-require '../view/includes/header.php';
-require '../core/dbconnexion.php';
+require 'view/includes/header.php';
+require 'core/dbconnexion.php';
 
 if (isset($_SESSION['id'])){
 
@@ -14,7 +14,7 @@ if (isset($_SESSION['id'])){
 
     if($_SESSION['username'] != $results['user']){
         @session_destroy();
-        header('location: http://localhost:3000/login');
+        header('https://one-more-hike.herokuapp.com/login');
     }
 
     // On récupère tout le contenu de la table Tags
@@ -62,7 +62,7 @@ if (isset($_SESSION['id'])){
 
         $stmt->execute();
 
-        header("Location: http://localhost:3000/profile?user=".$_SESSION['username']);
+        header("Location: https://one-more-hike.herokuapp.com/profile?user=".$_SESSION['username']);
       
       }else{
       ?>
@@ -129,7 +129,7 @@ if (isset($_SESSION['id'])){
 </body>
 <?php
   }else{
-    header('location: http://localhost:3000/login');
+    header('location: https://one-more-hike.herokuapp.com/login');
   }
-  require '../view/includes/footer.php';
+  require 'view/includes/footer.php';
 ?>

@@ -3,8 +3,8 @@ declare(strict_types=1);
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
-require '../view/includes/header.php';
-require '../core/dbconnexion.php';
+require 'view/includes/header.php';
+require 'core/dbconnexion.php';
 
 if (isset($_SESSION['id'])){
 
@@ -14,7 +14,7 @@ if (isset($_SESSION['id'])){
 
   if($_SESSION['username'] != $results['user']){
     @session_destroy();
-    header('location: http://localhost:3000/login');
+    header('location: https://one-more-hike.herokuapp.com/login');
   }
 
 // On récupère tout le contenu de la table Tags
@@ -45,7 +45,7 @@ if(!empty($_POST)){
   $hikeiD = $connect->prepare('SELECT LAST_INSERT_ID() FROM `hikes`');
   $hikeiD->execute();
 
-  header("Location: http://localhost:3000/profile?user=".$_SESSION['username']);
+  header("Location: https://one-more-hike.herokuapp.com/profile?user=".$_SESSION['username']);
 
 }else{
 ?>
@@ -113,8 +113,8 @@ $hikes = $allHikes->fetchAll();
         ?>
         <div class="hikes-box">
             <div class="hikes-box-icon">
-              <a href="http://localhost:3000/update-hike?user=<?php echo $_SESSION['username'] ?>&id=<?php echo $hike['hikeID'] ?>"><img src="../IMG/editer.png" alt="edit"></a>
-              <a href="http://localhost:3000/delete?id=<?php echo $hike['hikeID'] ?>" onclick="javascript: return confirm('Are you SURE you want to DELETE this Hike ?');"><img src="../IMG/supprimer.png" alt="delete"></a>
+              <a href="https://one-more-hike.herokuapp.com/update-hike?user=<?php echo $_SESSION['username'] ?>&id=<?php echo $hike['hikeID'] ?>"><img src="public/IMG/editer.png" alt="edit"></a>
+              <a href="https://one-more-hike.herokuapp.com/delete?id=<?php echo $hike['hikeID'] ?>" onclick="javascript: return confirm('Are you SURE you want to DELETE this Hike ?');"><img src="public/IMG/supprimer.png" alt="delete"></a>
             </div>
             <div class="hikes-box-img">
               <img src="<?php echo $hike['url_img'];?>" alt="image of <?php echo $hike['name'];?>">
@@ -135,7 +135,7 @@ $hikes = $allHikes->fetchAll();
   </body>
   <?php
   }else{
-    header('location: http://localhost:3000/login');
+    header('location: https://one-more-hike.herokuapp.com/login');
   }
-  require '../view/includes/footer.php';
+  require 'view/includes/footer.php';
   ?>

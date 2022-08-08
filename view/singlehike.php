@@ -4,7 +4,7 @@
     ini_set("display_errors", 1);
 
     require 'includes/header.php';
-    require_once('../core/dbconnexion.php');
+    require_once('core/dbconnexion.php');
 
     $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
     $components = parse_url($url);

@@ -5,7 +5,7 @@ ini_set("display_errors", 1);
 
 session_start ();
 
-    require '../core/dbconnexion.php';
+    require 'core/dbconnexion.php';
 
     if (!$_SESSION['id']){
         echo "<h1>tu n'est pas connecter</h1>";

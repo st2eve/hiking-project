@@ -20,7 +20,7 @@
         if(mail($mailAdmin, $sujet, $message)){
             
                 echo "Message accepted";
-                header('location: http://localhost:3000/home');
+                header('location: https://one-more-hike.herokuapp.com/home');
             }
             else
             {

@@ -3,8 +3,8 @@ declare(strict_types=1);
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
-require '../view/includes/header.php';
-require '../core/dbconnexion.php';
+require 'view/includes/header.php';
+require 'core/dbconnexion.php';
 
 if(!empty($_POST)){
 
@@ -28,7 +28,7 @@ if(!empty($_POST)){
     echo "<p class='psw-error'>Your passwords aren't identical, please check them.</p>";
   }else{
     $statement->execute($values);
-    header('location: http://localhost:3000/login');
+    header('location: https://one-more-hike.herokuapp.com/login');
   }
 
 }
@@ -65,12 +65,12 @@ if(!empty($_POST)){
             </div>
 
             <div class="container signin">
-                <p>Already have an account? <a href="http://localhost:3000/login">Sign in</a>.</p>
+                <p>Already have an account? <a href="https://one-more-hike.herokuapp.com/login">Sign in</a>.</p>
             </div>
         </form>
     </div>
   </body>
 
   <?php
-  require '../view/includes/footer.php';
+  require 'view/includes/footer.php';
   ?>
