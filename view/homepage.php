@@ -11,21 +11,21 @@
     $allTags->execute();
     $tags = $allTags->fetchAll();
 
-    /*$url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+    $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
     $components = parse_url($url);
-    parse_str($components['query'], $results);*/
+    parse_str($components['query'], $results);
 
-    /*if($results['tag'] == 'all'){*/
+    if($results['tag'] == 'all'){
         // On récupère tout le contenu de la table Hikes
         $allHikes = $connect->prepare("SELECT * FROM hikes");
         $allHikes->execute();
         $hikes = $allHikes->fetchAll();
-    /*}else{
+    }else{
         // On récupère le contenu de la table Hikes où les tags contiennent le tag en url
         $allHikes = $connect->prepare("SELECT * FROM hikes WHERE tags LIKE '%".$results['tag']."%'");
         $allHikes->execute();
         $hikes = $allHikes->fetchAll();
-    }*/
+    }
 ?>
 <body>
   <div class="main-block">
