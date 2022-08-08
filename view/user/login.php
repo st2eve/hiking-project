@@ -3,9 +3,9 @@ declare(strict_types=1);
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
-   require '../view/includes/header.php';
+   require 'view/includes/header.php';
    //Require la db
-   require '../core/dbconnexion.php';
+   require 'core/dbconnexion.php';
  
    // On check les donner dans le form
     if(ISSET($_POST['login'])){
@@ -61,5 +61,5 @@ ini_set("display_errors", 1);
    </div>
 </body>
 <?php
-    require '../view/includes/footer.php';
+    require 'view/includes/footer.php';
 ?>

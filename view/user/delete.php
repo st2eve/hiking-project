@@ -3,7 +3,7 @@ declare(strict_types=1);
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
-require '../core/dbconnexion.php';
+require 'core/dbconnexion.php';
 
 $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 $components = parse_url($url);
