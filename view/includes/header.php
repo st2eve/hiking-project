@@ -18,7 +18,7 @@ require_once('core/dbconnexion.php');
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
     />
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="public/css/main.css">
     <title>One more Hike</title>
 </head>
 <body>
@@ -33,7 +33,7 @@ require_once('core/dbconnexion.php');
         </div>
 
         <div class="logo">
-            <a href="http://https://one-more-hike.herokuapp.com/home?tag=all"><img src="IMG/Logo.png" alt="Logo" height="300px"></a>
+            <a href="http://https://one-more-hike.herokuapp.com/home?tag=all"><img src="public/IMG/Logo.png" alt="Logo" height="300px"></a>
         </div>
 
         <div class="head-right">
@@ -48,7 +48,7 @@ require_once('core/dbconnexion.php');
             <button name="contact" class="header-btn" type="button"><a href="contact">Contact</a></button>
         </div>
         <div class="logo">
-                <a href="https://one-more-hike.herokuapp.com/home?tag=all"><img src="IMG/Logo.png" alt="Logo" height="300px"></a>
+                <a href="https://one-more-hike.herokuapp.com/home?tag=all"><img src="public/IMG/Logo.png" alt="Logo" height="300px"></a>
         </div>
         <div class="head-right">
             <button name="login" class="header-btn" type="button"><a href="https://one-more-hike.herokuapp.com/login">Login</a></button>
