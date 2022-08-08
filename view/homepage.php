@@ -4,7 +4,7 @@
     ini_set("display_errors", 1);
 
     require 'includes/header.php';
-    require_once('../core/dbconnexion.php');
+    require_once('core/dbconnexion.php');
 
     // On récupère tout le contenu de la table Tags
     $allTags = $connect->prepare('SELECT * FROM Tags');
