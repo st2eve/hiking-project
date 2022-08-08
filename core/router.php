@@ -25,7 +25,7 @@ class Router
         if (array_key_exists($uri, $this->routes[$method])) { // $uri = '/home'
             require_once $this->routes[$method][$uri]; // require_once 'app/views/homepage.php'
         } else {
-            require_once('../view/404.php');
+            require_once('view/404.php');
         }
     }
 }
