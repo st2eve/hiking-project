@@ -9,7 +9,7 @@ $routes = [
     // Routes de la méthode GET (typiquement afficher une page)
     'GET' => [
         '/' => 'core/home.php',
-        '/home' => 'core/home.php',
+        '/home' => 'view/homepage.php',
         '/contact' => 'view/contact.php',
         '/404' => 'view/404.php',
         '/login' => 'view/user/login.php',
