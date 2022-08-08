@@ -11,9 +11,9 @@
     $allTags->execute();
     $tags = $allTags->fetchAll();
 
-    $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+    /*$url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
     $components = parse_url($url);
-    parse_str($components['query'], $results);
+    parse_str($components['query'], $results);*/
 
     if($results['tag'] == 'all'){
         // On récupère tout le contenu de la table Hikes
