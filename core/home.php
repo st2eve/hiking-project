@@ -1,4 +1,4 @@
 <?php
-    header('location: http://localhost:3000/home?tag=all');
+    header('location: https://one-more-hike.herokuapp.com/');
     exit();
 ?>
