@@ -15,7 +15,7 @@
     $components = parse_url($url);
     parse_str($components['query'], $results);*/
 
-    if($results['tag'] == 'all'){
+    /*if($results['tag'] == 'all'){
         // On récupère tout le contenu de la table Hikes
         $allHikes = $connect->prepare("SELECT * FROM hikes");
         $allHikes->execute();
@@ -25,7 +25,7 @@
         $allHikes = $connect->prepare("SELECT * FROM hikes WHERE tags LIKE '%".$results['tag']."%'");
         $allHikes->execute();
         $hikes = $allHikes->fetchAll();
-    }
+    }*/
 ?>
 <body>
   <div class="main-block">
